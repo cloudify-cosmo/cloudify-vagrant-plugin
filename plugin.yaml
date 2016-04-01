@@ -1,0 +1,5 @@
+plugins:
+  vagrant:
+    executor: central_deployment_agent
+    source: /home/david/vagrant-plugin
+    package_name: vagrant_plugin

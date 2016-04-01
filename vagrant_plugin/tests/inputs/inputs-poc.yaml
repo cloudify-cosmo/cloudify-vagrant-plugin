@@ -1,0 +1,5 @@
+vbox_url: 'ubuntu/trusty64'
+vbox_name: 'testbox'
+vm_name: 'testvm'
+vm_cpus: 2
+vm_memory: 1024

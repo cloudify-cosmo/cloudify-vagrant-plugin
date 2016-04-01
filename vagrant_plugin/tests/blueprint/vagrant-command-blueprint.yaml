@@ -1,0 +1,39 @@
+tosca_definitions_version: cloudify_dsl_1_2
+
+description: >
+  Add later
+
+imports:
+  - http://www.getcloudify.org/spec/cloudify/3.3.1/types.yaml
+  - /home/david/vagrant-plugin/plugin.yaml
+
+inputs:
+
+  vbox_name:
+    description: VBox name (alias)
+
+  vbox_url:
+    description: VBox box URL
+
+  vm_name:
+    description: Virtual machine's display name
+
+  vm_cpus:
+    description: Amount of CPUs to be used by the virtual machine
+
+  vm_memory:
+    description: Amount of memory to be used by the virtual machine
+
+node_templates:
+  vm:
+    type: cloudify.nodes.Root
+    interfaces:
+        cloudify.interfaces.lifecycle:
+            start:
+                implementation: vagrant.vagrant_plugin.tasks.start
+                inputs:
+                      vbox_url: { get_input: vbox_url }
+                      vbox_name: { get_input: vbox_name }
+                      vm_name: { get_input: vm_name }
+                      vm_cpus: { get_input: vm_cpus }
+                      vm_memory: { get_input: vm_memory }
