@@ -15,20 +15,20 @@ CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 def start(vbox_url, **kwargs):
     env = Environment(
             loader=FileSystemLoader(os.path.join(CURRENT_DIR,
-                                                os.path.pardir,
-                                                VBOX_RESOURCE_PATH)))
+                                                 os.path.pardir,
+                                                 VBOX_RESOURCE_PATH)))
     template = env.get_template(VAGRANTFILE_TEMPLATE)
 
     vm = {'vbox_name': kwargs['vbox_name'],
-            'vbox_url': vbox_url,
-            'vm_name': kwargs['vm_name'],
-            'vm_cpus': kwargs['vm_cpus'],
-            'vm_memory': kwargs['vm_memory']}
-    output_path = os.path.join(tempfile.gettempdir(), VAGRANTFILE_TMP_DIRECTORY,
+          'vbox_url': vbox_url,
+          'vm_name': kwargs['vm_name'],
+          'vm_cpus': kwargs['vm_cpus'],
+          'vm_memory': kwargs['vm_memory']}
+    output_path = os.path.join(tempfile.gettempdir(),
+                               VAGRANTFILE_TMP_DIRECTORY,
                                'Vagrantfile-{}'.format(ctx.node.properties[
                                                            'id']))
-    with open(output_path,
-              'w') as f:
+    with open(output_path, 'w') as f:
         f.write(template.render(vm=vm))
 
     v = vagrant.Vagrant()
