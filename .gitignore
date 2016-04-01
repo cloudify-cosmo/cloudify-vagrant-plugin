@@ -63,5 +63,5 @@ coverage.xml
 
 # Cloudify
 .cloudify/
-*.local/
-vagrant_plugin/*.local/
+local-storage*
+vagrant_plugin/local-storage*
