@@ -1,6 +1,5 @@
 #Intellij
 .idea/
-tattle.iml
 features.txt
 
 # Byte-compiled / optimized / DLL files
@@ -61,4 +60,8 @@ coverage.xml
 
 # Vagrant
 .vagrant/
-Vagrantfile
+
+# Cloudify
+.cloudify/
+*.local/
+vagrant_plugin/*.local/
