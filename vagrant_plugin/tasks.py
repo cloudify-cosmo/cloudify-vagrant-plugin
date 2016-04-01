@@ -20,7 +20,7 @@ def start(vbox_url, **kwargs):
             'vm_name': kwargs['vm_name'],
             'vm_cpus': kwargs['vm_cpus'],
             'vm_memory': kwargs['vm_memory']}
-    with open('Vagrantfile', 'w') as f:
+    with open(os.path.join(VBOX_OUTPUT, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm=vm))
 
     v = vagrant.Vagrant()
