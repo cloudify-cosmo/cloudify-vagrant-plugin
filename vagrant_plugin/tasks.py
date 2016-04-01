@@ -3,6 +3,7 @@ import os
 from jinja2 import Environment, FileSystemLoader
 from cloudify import ctx
 from cloudify.decorators import operation
+import tempfile
 
 VAGRANTFILE_TEMPLATE = 'Vagrantfile.template'
 VBOX_OUTPUT = 'vbox_output'
