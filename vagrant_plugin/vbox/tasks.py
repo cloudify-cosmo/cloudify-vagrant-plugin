@@ -7,6 +7,7 @@ import tempfile
 
 VAGRANTFILE_TEMPLATE = 'Vagrantfile.template'
 VBOX_OUTPUT = 'vbox'
+VAGRANTFILE_TMP_DIRECTORY = 'cloudify-vagrant-plugin'
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
