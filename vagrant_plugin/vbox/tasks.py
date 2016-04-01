@@ -31,5 +31,5 @@ def start(vbox_url, **kwargs):
     with open(os.path.join(output_path, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm=vm))
 
-    v = vagrant.Vagrant()
+    v = vagrant.Vagrant(root=output_path)
     v.up()
