@@ -28,7 +28,7 @@ def start(vbox_url, **kwargs):
                                VAGRANTFILE_TMP_DIRECTORY,
                                'Vagrantfile-{}'.format(ctx.node.properties[
                                                            'id']))
-    with open(output_path, 'w') as f:
+    with open(os.path.join(output_path, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm=vm))
 
     v = vagrant.Vagrant()
