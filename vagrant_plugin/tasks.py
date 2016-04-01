@@ -10,7 +10,8 @@ CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 @operation
 def start(vbox_url, **kwargs):
-    env = Environment(loader=FileSystemLoader(CURRENT_DIR))
+    env = Environment(loader=FileSystemLoader(os.path.join(CURRENT_DIR,
+                                                           'resources')))
     template = env.get_template(VAGRANTFILE_TEMPLATE)
 
     vm = {'vbox_name': kwargs['vbox_name'],
