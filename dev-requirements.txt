@@ -1,0 +1,1 @@
+https://github.com/davidginzbourg/cloudify-vagrant-plugin/archive/master.zip
