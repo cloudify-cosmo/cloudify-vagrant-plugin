@@ -6,7 +6,7 @@ from cloudify.decorators import operation
 import tempfile
 
 VAGRANTFILE_TEMPLATE = 'Vagrantfile.template'
-VBOX_OUTPUT = 'vbox_output'
+VBOX_OUTPUT = 'vbox'
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
