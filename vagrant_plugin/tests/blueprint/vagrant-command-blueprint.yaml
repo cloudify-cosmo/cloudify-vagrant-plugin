@@ -24,9 +24,14 @@ inputs:
   vm_memory:
     description: Amount of memory to be used by the virtual machine
 
+  vm_ip_address:
+    description: The IPv4 address which the virtual machine will be
+    configured with
+
 node_templates:
-  vm:
+  vm1:
     type: cloudify.nodes.Root
+    instances: 5
     interfaces:
         cloudify.interfaces.lifecycle:
             start:
@@ -37,3 +42,19 @@ node_templates:
                       vm_name: { get_input: vm_name }
                       vm_cpus: { get_input: vm_cpus }
                       vm_memory: { get_input: vm_memory }
+                      vm_ip_address: { get_input: vm_ip_address}
+
+  vm2:
+    type: cloudify.nodes.Root
+    instances: 5
+    interfaces:
+        cloudify.interfaces.lifecycle:
+            start:
+                implementation: vagrant.vagrant_plugin.tasks.start
+                inputs:
+                      vbox_url: { get_input: vbox_url }
+                      vbox_name: { get_input: vbox_name }
+                      vm_name: { get_input: vm_name }
+                      vm_cpus: { get_input: vm_cpus }
+                      vm_memory: { get_input: vm_memory }
+                      vm_ip_address: { get_input: vm_ip_address}
