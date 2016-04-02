@@ -31,8 +31,11 @@ def start(vbox_url, **kwargs):
         while True:
             try:
                 os.makedirs(output_path)
+                ctx.logger.info('\'{}\' path has been created'
+                                .format(output_path))
                 break
             except OSError as exc:
+                ctx.logger.info('OSError ignored')
                 pass
     with open(os.path.join(output_path, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm=vm))
