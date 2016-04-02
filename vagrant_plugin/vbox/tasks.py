@@ -13,6 +13,7 @@ CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 @operation
 def start(vbox_url, **kwargs):
+    instance_id = ctx.instance.id
     env = Environment(
             loader=FileSystemLoader(os.path.join(os.path.dirname(CURRENT_DIR),
                                                  VBOX_RESOURCE_PATH)))
@@ -26,7 +27,7 @@ def start(vbox_url, **kwargs):
     output_path = os.path.join(tempfile.gettempdir(),
                                VAGRANTFILE_TMP_DIRECTORY,
                                'vagrantfile-{}'.format(
-                                       ctx.instance.id))
+                                       instance_id))
     if not os.path.exists(output_path):
         while True:
             try:
