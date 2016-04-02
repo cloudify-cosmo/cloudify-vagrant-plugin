@@ -32,7 +32,7 @@ node_templates:
   vm1:
     type: cloudify.nodes.Root
     instances:
-      deploy: 5
+      deploy: 2
     interfaces:
         cloudify.interfaces.lifecycle:
             start:
