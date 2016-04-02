@@ -24,7 +24,8 @@ def start(vbox_url, **kwargs):
           'vm_name_prefix':
               '{}_{}'.format(kwargs['vm_name_prefix'], instance_id),
           'vm_cpus': kwargs['vm_cpus'],
-          'vm_memory': kwargs['vm_memory']}
+          'vm_memory': kwargs['vm_memory'],
+          'vm_ip_address': kwargs['vm_ip_address']}
     output_path = os.path.join(tempfile.gettempdir(),
                                VAGRANTFILE_TMP_DIRECTORY,
                                'vagrantfile-{}'.format(
