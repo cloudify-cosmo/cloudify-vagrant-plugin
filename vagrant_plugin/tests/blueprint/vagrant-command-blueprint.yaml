@@ -36,7 +36,7 @@ node_templates:
     interfaces:
         cloudify.interfaces.lifecycle:
             start:
-                implementation: vagrant.vagrant_plugin.tasks.start
+                implementation: vagrant.vagrant_plugin.vbox.tasks.start
                 inputs:
                       vbox_url: { get_input: vbox_url }
                       vbox_name: { get_input: vbox_name }
@@ -50,7 +50,7 @@ node_templates:
     interfaces:
         cloudify.interfaces.lifecycle:
             start:
-                implementation: vagrant.vagrant_plugin.tasks.start
+                implementation: vagrant.vagrant_plugin.vbox.tasks.start
                 inputs:
                       vbox_url: { get_input: vbox_url }
                       vbox_name: { get_input: vbox_name }
