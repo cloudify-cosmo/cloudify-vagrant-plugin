@@ -41,5 +41,7 @@ def start(vbox_url, **kwargs):
     with open(os.path.join(output_path, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm=vm))
 
+    ctx.logger.info('initialize Vagrant for {}'.format(instance_id))
     v = vagrant.Vagrant(root=output_path)
+    ctx.logger.info('running \'vagrant up\' for {}'.format(instance_id))
     v.up()
