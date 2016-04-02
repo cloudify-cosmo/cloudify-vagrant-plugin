@@ -27,6 +27,14 @@ def start(vbox_url, **kwargs):
                                VAGRANTFILE_TMP_DIRECTORY,
                                'Vagrantfile-{}'.format(
                                        ctx.instance.id))
+    if not os.path.exists(os.path.dirname(output_path)):
+        while True:
+            try:
+                os.makedirs(os.path.dirname(output_path))
+                break
+            except OSError as exc:
+                print 'OSError ignored'
+                pass
     with open(os.path.join(output_path, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm=vm))
 
