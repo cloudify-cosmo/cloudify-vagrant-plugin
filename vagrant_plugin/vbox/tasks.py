@@ -21,7 +21,8 @@ def start(vbox_url, **kwargs):
 
     vm = {'vbox_name': kwargs['vbox_name'],
           'vbox_url': vbox_url,
-          'vm_name_prefix': '{}_{}'.format(kwargs['vm_name_prefix']),
+          'vm_name_prefix':
+              '{}_{}'.format(kwargs['vm_name_prefix'], instance_id),
           'vm_cpus': kwargs['vm_cpus'],
           'vm_memory': kwargs['vm_memory']}
     output_path = os.path.join(tempfile.gettempdir(),
