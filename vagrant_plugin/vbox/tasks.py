@@ -7,15 +7,14 @@ import tempfile
 
 VAGRANTFILE_TEMPLATE = 'Vagrantfile.template'
 VAGRANTFILE_TMP_DIRECTORY = 'cloudify-vagrant-plugin'
-VBOX_RESOURCE_PATH = 'resources/vbox'
+VBOX_RESOURCE_PATH = os.path.join('resources', 'vbox')
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 @operation
 def start(vbox_url, **kwargs):
     env = Environment(
-            loader=FileSystemLoader(os.path.join(CURRENT_DIR,
-                                                 os.path.pardir,
+            loader=FileSystemLoader(os.path.join(os.path.dirname(CURRENT_DIR),
                                                  VBOX_RESOURCE_PATH)))
     template = env.get_template(VAGRANTFILE_TEMPLATE)
 
