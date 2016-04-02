@@ -25,8 +25,8 @@ def start(vbox_url, **kwargs):
           'vm_memory': kwargs['vm_memory']}
     output_path = os.path.join(tempfile.gettempdir(),
                                VAGRANTFILE_TMP_DIRECTORY,
-                               'Vagrantfile-{}'.format(ctx.node.properties[
-                                                           'id']))
+                               'Vagrantfile-{}'.format(
+                                       ctx.instance.id))
     with open(os.path.join(output_path, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm=vm))
 
