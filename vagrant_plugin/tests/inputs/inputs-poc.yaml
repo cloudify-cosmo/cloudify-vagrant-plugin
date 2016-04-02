@@ -1,6 +1,6 @@
 vbox_url: 'ubuntu/trusty64'
 vbox_name: 'testbox'
-vm_name: 'testvm1'
+vm_name_prefix: 'test'
 vm_cpus: 2
 vm_memory: 1024
 vm_ip_address: 10.0.0.8

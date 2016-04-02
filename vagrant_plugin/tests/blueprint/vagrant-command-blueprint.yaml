@@ -15,7 +15,7 @@ inputs:
   vbox_url:
     description: VBox box URL
 
-  vm_name:
+  vm_name_prefix:
     description: Virtual machine's display name
 
   vm_cpus:
@@ -40,7 +40,7 @@ node_templates:
                 inputs:
                       vbox_url: { get_input: vbox_url }
                       vbox_name: { get_input: vbox_name }
-                      vm_name: { get_input: vm_name }
+                      vm_name_prefix: { get_input: vm_name_prefix }
                       vm_cpus: { get_input: vm_cpus }
                       vm_memory: { get_input: vm_memory }
                       vm_ip_address: { get_input: vm_ip_address}
@@ -54,7 +54,7 @@ node_templates:
                 inputs:
                       vbox_url: { get_input: vbox_url }
                       vbox_name: { get_input: vbox_name }
-                      vm_name: { get_input: vm_name }
+                      vm_name_prefix: { get_input: vm_name_prefix }
                       vm_cpus: { get_input: vm_cpus }
                       vm_memory: { get_input: vm_memory }
                       vm_ip_address: { get_input: vm_ip_address}
