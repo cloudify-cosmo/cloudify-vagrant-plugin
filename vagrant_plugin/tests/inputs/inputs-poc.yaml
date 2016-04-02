@@ -1,14 +1,6 @@
-vm1:
-  vbox_url: 'ubuntu/trusty64'
-  vbox_name: 'testbox'
-  vm_name: 'testvm1'
-  vm_cpus: 2
-  vm_memory: 1024
-  ip_address: 10.0.0.8
-
-vm2:
-  vbox_url: 'ubuntu/trusty64'
-  vbox_name: 'testbox'
-  vm_name: 'testvm2'
-  vm_cpus: 2
-  vm_memory: 1024
+vbox_url: 'ubuntu/trusty64'
+vbox_name: 'testbox'
+vm_name: 'testvm1'
+vm_cpus: 2
+vm_memory: 1024
+vm_ip_address: 10.0.0.8
