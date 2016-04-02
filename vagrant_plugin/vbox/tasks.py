@@ -25,7 +25,7 @@ def start(vbox_url, **kwargs):
           'vm_memory': kwargs['vm_memory']}
     output_path = os.path.join(tempfile.gettempdir(),
                                VAGRANTFILE_TMP_DIRECTORY,
-                               'Vagrantfile-{}'.format(
+                               'vagrantfile-{}'.format(
                                        ctx.instance.id))
     if not os.path.exists(output_path):
         while True:
