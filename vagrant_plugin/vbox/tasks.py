@@ -26,20 +26,15 @@ def start(vbox_url, **kwargs):
           'vm_cpus': kwargs['vm_cpus'],
           'vm_memory': kwargs['vm_memory'],
           'vm_ip_address': kwargs['vm_ip_address']}
+
     output_path = os.path.join(tempfile.gettempdir(),
                                VAGRANTFILE_TMP_DIRECTORY,
                                'vagrantfile-{0}'.format(
                                        instance_id))
     if not os.path.exists(output_path):
-        while True:
-            try:
-                os.makedirs(output_path)
-                ctx.logger.info('\'{0}\' path has been created'
-                                .format(output_path))
-                break
-            except OSError as exc:
-                ctx.logger.info('OSError ignored')
-                pass
+        os.makedirs(output_path)
+        ctx.logger.info('\'{0}\' path has been created'
+                        .format(output_path))
     with open(os.path.join(output_path, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm=vm))
 
