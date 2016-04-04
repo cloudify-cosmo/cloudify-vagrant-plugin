@@ -22,19 +22,19 @@ def start(vbox_url, **kwargs):
     vm = {'vbox_name': kwargs['vbox_name'],
           'vbox_url': vbox_url,
           'vm_name_prefix':
-              '{}_{}'.format(kwargs['vm_name_prefix'], instance_id),
+              '{0}_{1}'.format(kwargs['vm_name_prefix'], instance_id),
           'vm_cpus': kwargs['vm_cpus'],
           'vm_memory': kwargs['vm_memory'],
           'vm_ip_address': kwargs['vm_ip_address']}
     output_path = os.path.join(tempfile.gettempdir(),
                                VAGRANTFILE_TMP_DIRECTORY,
-                               'vagrantfile-{}'.format(
+                               'vagrantfile-{0}'.format(
                                        instance_id))
     if not os.path.exists(output_path):
         while True:
             try:
                 os.makedirs(output_path)
-                ctx.logger.info('\'{}\' path has been created'
+                ctx.logger.info('\'{0}\' path has been created'
                                 .format(output_path))
                 break
             except OSError as exc:
