@@ -11,6 +11,16 @@ VBOX_RESOURCE_PATH = os.path.join('resources', 'vbox')
 CURRENT_DIR = os.getcwd()
 
 
+def return_vbox_conf(**kwargs):
+    try:
+        return 'config.vm.box = {0}'.format(kwargs['vbox_name'])
+    except KeyError:
+        try:
+            return 'config.vm.box_url = {0}'.format(kwargs['vbox_url'])
+        except KeyError:
+            print IOError('No vagrant box url nor name provided')
+
+
 @operation
 def start(**kwargs):
     instance_id = ctx.instance.id
@@ -19,8 +29,8 @@ def start(**kwargs):
                                                  VBOX_RESOURCE_PATH)))
     template = env.get_template(VAGRANTFILE_TEMPLATE)
 
-    vm = {'vbox_name': kwargs['vbox_name'],
-          'vbox_url': kwargs['vbox_url'],
+
+    vm = {'vbox_conf': return_vbox_conf(kwargs),
           'vm_name_prefix':
               '{0}_{1}'.format(kwargs['vm_name_prefix'], instance_id),
           'vm_cpus': kwargs['vm_cpus'],
