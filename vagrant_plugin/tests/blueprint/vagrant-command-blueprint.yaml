@@ -41,7 +41,10 @@ node_templates:
                   vm_memory: { get_input: vm_memory }
                   vm_ip_address: { get_input: vm_ip_address}
                   additional_vagrant_settings:
+                    config.ssh.username: { get_input: config.ssh.username}
+                    config.ssh.password: { get_input: config.ssh.password}
                   additional_virtualbox_settings:
+                    v.gui: { get_input: v.gui}
 
 
 
@@ -57,5 +60,3 @@ node_templates:
                   vm_cpus: { get_input: vm_cpus }
                   vm_memory: { get_input: vm_memory }
                   vm_ip_address: { get_input: vm_ip_address}
-                  additional_vagrant_settings:
-                  additional_virtualbox_settings:
