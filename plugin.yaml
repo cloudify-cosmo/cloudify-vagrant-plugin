@@ -2,4 +2,4 @@ plugins:
   vagrant:
     executor: central_deployment_agent
     source: https://github.com/davidginzbourg/cloudify-vagrant-plugin/archive/developement.zip
-    package_name: vagrant_plugin
+    package_name: cloudify-vagrant-plugin
