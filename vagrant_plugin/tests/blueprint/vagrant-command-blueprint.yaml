@@ -43,9 +43,9 @@ node_templates:
                   vm_cpus: { get_input: vm_cpus }
                   vm_memory: { get_input: vm_memory }
                   vm_ip_address: { get_input: vm_ip_address}
-                  additional_vagrant_settings:
+                  vbox_name: { get_input: vbox_name }
+                  additional_settings:
                     vbox_name: { get_input: vbox_name }
-                  additional_virtualbox_settings:
 
 
   vm2:
