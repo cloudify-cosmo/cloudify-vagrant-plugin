@@ -1,4 +1,4 @@
-vbox_url: '/home/david/Downloads/precise64.box'
+vbox: 'file:///home/david/Downloads/precise64.box'
 vm_name_prefix: 'test'
 vm_cpus: 2
 vm_memory: 1024
