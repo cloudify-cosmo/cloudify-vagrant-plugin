@@ -3,11 +3,17 @@ Vagrant.configure(2) do |config|
 	config.vm.box = '{{vm.vbox}}'
     config.vm.network "private_network", ip: '{{vm.vm_ip_address}}'
 
+    # Option to add additional vagrant settings
+    {{vm.additional_vagrant_settings}}
+
 	config.vm.provider "virtualbox" do |v|
 	    # Configure virtualbox settings
 	    v.name = '{{vm.vm_name_prefix}}'
 	    v.memory = {{vm.vm_memory}}
 	    v.cpus = {{vm.vm_cpus}}
+
+	    # Option to add additional virtualbox settings
+	    {{vm.additional_virtualbox_settings}}
 	end
 
 end
