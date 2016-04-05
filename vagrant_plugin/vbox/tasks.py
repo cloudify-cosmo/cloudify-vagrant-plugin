@@ -19,7 +19,7 @@ def start(**kwargs):
                                              VBOX_RESOURCE_PATH)))
     template = env.get_template(VAGRANTFILE_TEMPLATE)
 
-    vm = {'vbox_conf': return_vbox_conf(kwargs),
+    vm = {'vbox': kwargs['vbox'],
           'vm_name_prefix':
               '{0}_{1}'.format(kwargs['vm_name_prefix'], instance_id),
           'vm_cpus': kwargs['vm_cpus'],

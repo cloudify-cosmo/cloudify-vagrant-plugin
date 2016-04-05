@@ -9,8 +9,8 @@ imports:
 
 inputs:
 
-  vbox_url:
-    description: VBox box URL
+  vbox:
+    description: VBox box URL or shortened name
 
   vm_name_prefix:
     description: Virtual machine's display name
@@ -35,7 +35,7 @@ node_templates:
             start:
                 implementation: vagrant.vagrant_plugin.vbox.tasks.start
                 inputs:
-                  vbox_url: { get_input: vbox_url }
+                  vbox: { get_input: vbox }
                   vm_name_prefix: { get_input: vm_name_prefix }
                   vm_cpus: { get_input: vm_cpus }
                   vm_memory: { get_input: vm_memory }
@@ -51,7 +51,7 @@ node_templates:
             start:
                 implementation: vagrant.vagrant_plugin.vbox.tasks.start
                 inputs:
-                  vbox_url: { get_input: vbox_url }
+                  vbox: { get_input: vbox }
                   vm_name_prefix: { get_input: vm_name_prefix }
                   vm_cpus: { get_input: vm_cpus }
                   vm_memory: { get_input: vm_memory }

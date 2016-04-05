@@ -1,6 +1,6 @@
 Vagrant.configure(2) do |config|
     # Configure vagrant settings
-	{{vm.vbox_conf}}
+	config.vm.box = '{{vm.vbox}}'
     config.vm.network "private_network", ip: '{{vm.vm_ip_address}}'
 
 	config.vm.provider "virtualbox" do |v|
