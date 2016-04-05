@@ -27,7 +27,7 @@ def start(**kwargs):
           'vm_memory': kwargs['vm_memory'],
           'vm_ip_address': kwargs['vm_ip_address']}
 
-    output_path = tempfile.mkdtemp(prefix=VAGRANTFILE_TMP_DIRECTORY, suffix=instance_id)
+    output_path = tempfile.mkdtemp(prefix=VAGRANTFILE_TMP_DIRECTORY, suffix='-'+instance_id)
     ctx.logger.info('"{0}" path has been created'.format(output_path))
 
     with open(os.path.join(output_path, 'Vagrantfile'), 'w') as f:
