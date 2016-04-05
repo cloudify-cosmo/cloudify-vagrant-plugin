@@ -26,11 +26,14 @@ def start(**kwargs):
           'vm_cpus': kwargs['vm_cpus'],
           'vm_memory': kwargs['vm_memory'],
           'vm_ip_address': kwargs['vm_ip_address'],
-          'additional_vagrant_settings': utils.parse_vagrant_conf(kwargs['additional_vagrant_settings']),
-          'additional_virtualbox_settings': utils.parse_vbox_conf(kwars['additional_virtualbox_settings'])
+          'additional_vagrant_settings': utils.parse_additional_settings(
+              kwargs['additional_vagrant_settings'], indents=1),
+          'additional_virtualbox_settings': utils.parse_additional_settings(
+              kwars['additional_virtualbox_settings'], indents=2)
           }
 
-    output_path = tempfile.mkdtemp(prefix=VAGRANTFILE_TMP_DIRECTORY, suffix='-' + instance_id)
+    output_path = tempfile.mkdtemp(prefix=VAGRANTFILE_TMP_DIRECTORY,
+                                   suffix='-' + instance_id)
     ctx.logger.info('"{0}" path has been created'.format(output_path))
 
     with open(os.path.join(output_path, 'Vagrantfile'), 'w') as f:
