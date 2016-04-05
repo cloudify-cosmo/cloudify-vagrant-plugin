@@ -43,9 +43,8 @@ node_templates:
                   vm_cpus: { get_input: vm_cpus }
                   vm_memory: { get_input: vm_memory }
                   vm_ip_address: { get_input: vm_ip_address}
-                  vbox_name: { get_input: vbox_name }
-                  additional_settings:
-                    vbox_name: { get_input: vbox_name }
+                  additional_settings: {}
+
 
 
   vm2:
@@ -56,8 +55,8 @@ node_templates:
                 implementation: vagrant.vagrant_plugin.vbox.tasks.start
                 inputs:
                   vbox_url: { get_input: vbox_url }
-                  vbox_name: { get_input: vbox_name }
                   vm_name_prefix: { get_input: vm_name_prefix }
                   vm_cpus: { get_input: vm_cpus }
                   vm_memory: { get_input: vm_memory }
                   vm_ip_address: { get_input: vm_ip_address}
+                  additional_settings: {}
