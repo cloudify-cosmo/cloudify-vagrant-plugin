@@ -25,10 +25,9 @@ def return_vbox_conf(**kwargs):
 def start(**kwargs):
     instance_id = ctx.instance.id
     env = Environment(
-            loader=FileSystemLoader(os.path.join(os.path.dirname(CURRENT_DIR),
-                                                 VBOX_RESOURCE_PATH)))
+        loader=FileSystemLoader(os.path.join(os.path.dirname(CURRENT_DIR),
+                                             VBOX_RESOURCE_PATH)))
     template = env.get_template(VAGRANTFILE_TEMPLATE)
-
 
     vm = {'vbox_conf': return_vbox_conf(kwargs),
           'vm_name_prefix':
@@ -37,7 +36,7 @@ def start(**kwargs):
           'vm_memory': kwargs['vm_memory'],
           'vm_ip_address': kwargs['vm_ip_address']}
 
-    output_path = tempfile.mkdtemp(prefix=VAGRANTFILE_TMP_DIRECTORY, suffix='-'+instance_id)
+    output_path = tempfile.mkdtemp(prefix=VAGRANTFILE_TMP_DIRECTORY, suffix='-' + instance_id)
     ctx.logger.info('"{0}" path has been created'.format(output_path))
 
     with open(os.path.join(output_path, 'Vagrantfile'), 'w') as f:
