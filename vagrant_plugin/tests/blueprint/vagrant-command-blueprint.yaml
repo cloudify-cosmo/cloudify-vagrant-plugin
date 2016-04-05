@@ -23,10 +23,8 @@ inputs:
 
   vm_ip_address:
     description: >
-      The IPv4 address which the virtual machine will be configured with
-
-  vm_ip_CIDR:
-    description: CIDR to generate an IP address from
+      The IPv4 address which the virtual machine will be configured with.
+      Provide a CIDR to automatically generate an IP by the CIDR.
 
   additional_vagrant_settings:
     description: >
@@ -53,8 +51,7 @@ node_templates:
                   vm_name_prefix: { get_input: vm_name_prefix }
                   vm_cpus: { get_input: vm_cpus }
                   vm_memory: { get_input: vm_memory }
-                  vm_ip_address: {}
-                  vm_ip_CIDR: { get_input: vm_ip_CIDR }
+                  vm_ip_address: { get_input: vm_ip_address }
                   additional_vagrant_settings: {}
                   additional_virtualbox_settings: {}
 
