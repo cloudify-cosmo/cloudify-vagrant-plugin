@@ -25,10 +25,19 @@ inputs:
     description: >
       The IPv4 address which the virtual machine will be configured with
 
+  vm_ip_CIDR:
+    description: CIDR to generate an IP address from
+
   additional_vagrant_settings:
-
+    description: >
+      Accepts a dictionary with vagrant config parameters. The key and
+      values will be printed into the Vagrant file as "key= value", at the
+      vagrant machine configuration part.
   additional_virtualbox_settings:
-
+    description: >
+          Accepts a dictionary with vagrant config parameters. The key and
+          values will be printed into the Vagrant file as "key= value", at
+          the virtualbox machine configuration part.
 
 node_templates:
   vm1:
@@ -44,11 +53,10 @@ node_templates:
                   vm_name_prefix: { get_input: vm_name_prefix }
                   vm_cpus: { get_input: vm_cpus }
                   vm_memory: { get_input: vm_memory }
-                  vm_ip_address: { get_input: vm_ip_address}
-                  additional_vagrant_settings: { get_input:
-                    additional_vagrant_settings }
-                  additional_virtualbox_settings: { get_input:
-                    additional_virtualbox_settings }
+                  vm_ip_address: {}
+                  vm_ip_CIDR: { get_input: vm_ip_CIDR }
+                  additional_vagrant_settings: {}
+                  additional_virtualbox_settings: {}
 
 
 
@@ -63,6 +71,6 @@ node_templates:
                   vm_name_prefix: { get_input: vm_name_prefix }
                   vm_cpus: { get_input: vm_cpus }
                   vm_memory: { get_input: vm_memory }
-                  vm_ip_address: { get_input: vm_ip_address}
+                  vm_ip_address: {}
                   additional_vagrant_settings: {}
                   additional_virtualbox_settings: {}
