@@ -26,8 +26,8 @@ def start(**kwargs):
           'vm_cpus': kwargs['vm_cpus'],
           'vm_memory': kwargs['vm_memory'],
           'vm_ip_address': kwargs['vm_ip_address'],
-          'additional_vagrant_settings': parse_vagrant_conf(kwargs['additional_vagrant_settings']),
-          'additional_virtualbox_settings': parse_vbox_conf(kwars['additional_virtualbox_settings'])
+          'additional_vagrant_settings': utils.parse_vagrant_conf(kwargs['additional_vagrant_settings']),
+          'additional_virtualbox_settings': utils.parse_vbox_conf(kwars['additional_virtualbox_settings'])
           }
 
     output_path = tempfile.mkdtemp(prefix=VAGRANTFILE_TMP_DIRECTORY, suffix='-' + instance_id)
