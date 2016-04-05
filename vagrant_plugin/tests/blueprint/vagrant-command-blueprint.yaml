@@ -5,7 +5,7 @@ description: >
 
 imports:
   - http://www.getcloudify.org/spec/cloudify/3.3.1/types.yaml
-  - https://raw.githubusercontent.com/davidginzbourg/cloudify-vagrant-plugin/developement/plugin.yaml
+  - /home/david/cloudify-vagrant-plugin/plugin.yaml
 
 inputs:
 
