@@ -5,7 +5,7 @@ description: >
 
 imports:
   - http://www.getcloudify.org/spec/cloudify/3.3.1/types.yaml
-  - /home/david/cloudify-vagrant-plugin/plugin.yaml
+  - https://raw.githubusercontent.com/davidginzbourg/cloudify-vagrant-plugin/developement/plugin.yaml
 
 inputs:
 
@@ -38,12 +38,15 @@ node_templates:
             start:
                 implementation: vagrant.vagrant_plugin.vbox.tasks.start
                 inputs:
-                      vbox_url: { get_input: vbox_url }
-                      vbox_name: { get_input: vbox_name }
-                      vm_name_prefix: { get_input: vm_name_prefix }
-                      vm_cpus: { get_input: vm_cpus }
-                      vm_memory: { get_input: vm_memory }
-                      vm_ip_address: { get_input: vm_ip_address}
+                  vbox_url: { get_input: vbox_url }
+                  vm_name_prefix: { get_input: vm_name_prefix }
+                  vm_cpus: { get_input: vm_cpus }
+                  vm_memory: { get_input: vm_memory }
+                  vm_ip_address: { get_input: vm_ip_address}
+                  additional_vagrant_settings:
+                    vbox_name: { get_input: vbox_name }
+                  additional_virtualbox_settings:
+
 
   vm2:
     type: cloudify.nodes.Root
@@ -52,9 +55,9 @@ node_templates:
             start:
                 implementation: vagrant.vagrant_plugin.vbox.tasks.start
                 inputs:
-                      vbox_url: { get_input: vbox_url }
-                      vbox_name: { get_input: vbox_name }
-                      vm_name_prefix: { get_input: vm_name_prefix }
-                      vm_cpus: { get_input: vm_cpus }
-                      vm_memory: { get_input: vm_memory }
-                      vm_ip_address: { get_input: vm_ip_address}
+                  vbox_url: { get_input: vbox_url }
+                  vbox_name: { get_input: vbox_name }
+                  vm_name_prefix: { get_input: vm_name_prefix }
+                  vm_cpus: { get_input: vm_cpus }
+                  vm_memory: { get_input: vm_memory }
+                  vm_ip_address: { get_input: vm_ip_address}
