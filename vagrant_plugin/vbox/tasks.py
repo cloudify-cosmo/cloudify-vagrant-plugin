@@ -4,6 +4,7 @@ from jinja2 import Environment, FileSystemLoader
 from cloudify import ctx
 from cloudify.decorators import operation
 import tempfile
+import utils
 
 VAGRANTFILE_TEMPLATE = 'Vagrantfile.template'
 VAGRANTFILE_TMP_DIRECTORY = 'cloudify-vagrant-plugin'
