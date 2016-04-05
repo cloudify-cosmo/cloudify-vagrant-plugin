@@ -1,7 +1,5 @@
-def parse_vagrant_conf(additional_vagrant_settings):
-    raise NotImplementedError
-
-
-def parse_vbox_conf(additional_virtualbox_settings):
-    raise NotImplementedError
-
+def parse_additional_settings(additional_settings, indents):
+    string_buffer = ''
+    for key, value in additional_settings.items():
+        string_buffer += '\n{0} {1}: "{2}"'.format('\t'*indents, key, value)
+    return string_buffer
