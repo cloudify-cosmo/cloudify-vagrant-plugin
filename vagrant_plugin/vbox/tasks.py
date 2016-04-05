@@ -12,7 +12,7 @@ CURRENT_DIR = os.getcwd()
 
 
 @operation
-def start(vbox_url, **kwargs):
+def start(**kwargs):
     instance_id = ctx.instance.id
     env = Environment(
             loader=FileSystemLoader(os.path.join(os.path.dirname(CURRENT_DIR),
@@ -20,7 +20,7 @@ def start(vbox_url, **kwargs):
     template = env.get_template(VAGRANTFILE_TEMPLATE)
 
     vm = {'vbox_name': kwargs['vbox_name'],
-          'vbox_url': vbox_url,
+          'vbox_url': kwargs['vbox_url'],
           'vm_name_prefix':
               '{0}_{1}'.format(kwargs['vm_name_prefix'], instance_id),
           'vm_cpus': kwargs['vm_cpus'],
