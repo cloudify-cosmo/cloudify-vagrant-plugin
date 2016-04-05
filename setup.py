@@ -5,7 +5,7 @@ setup(
         version='1.0',
         author='Gigaspaces',
         author_email='cosmo-admin@gigaspaces.com',
-        packages=['vagrant_plugin'],
+        packages=['vagrant_plugin', 'vagrant_plugin/vbox'],
         license='LICENSE',
         description='Plugin for running vagrant tasks',
         install_requires=[
