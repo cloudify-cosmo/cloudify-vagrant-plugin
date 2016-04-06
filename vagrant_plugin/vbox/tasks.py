@@ -43,3 +43,8 @@ def start(**kwargs):
     v = vagrant.Vagrant(root=output_path)
     ctx.logger.info('Running "vagrant up" for {0}'.format(instance_id))
     v.up()
+
+
+@operation
+def config(**kwargs):
+    raise NotImplementedError
