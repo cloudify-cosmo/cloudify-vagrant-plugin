@@ -50,4 +50,6 @@ def start(**kwargs):
 
 @operation
 def config(**kwargs):
-    raise NotImplementedError
+    ctx.logget.info('Running "vagrant provision" for {0}'.format(instance_id))
+    v = vagrant.Vagrant(root=ctx.instance.runtime_properties['output_path'])
+    v.provision()
