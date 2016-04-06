@@ -13,8 +13,8 @@ class TestPlugin(unittest.TestCase):
                    inputs=utils.get_inputs('test_my_task'))
     def test_my_task(self, cfy_local):
         vagrant_plugin.vbox.tasks.CURRENT_DIR = \
-            os.path.join('vbox',
-                         utils.get_n_dir_back(os.getcwd(), multiplier=2))
+            os.path.join(utils.get_n_dir_back(os.getcwd(), multiplier=2),
+                         'vbox')
 
         # execute install workflow
         """
