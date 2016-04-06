@@ -29,7 +29,8 @@ def start(**kwargs):
           'additional_vagrant_settings': utils.parse_additional_settings(
               kwargs['additional_vagrant_settings'], indents=1),
           'additional_virtualbox_settings': utils.parse_additional_settings(
-              kwargs['additional_virtualbox_settings'], indents=2)
+              kwargs['additional_virtualbox_settings'], indents=2),
+          'provision_sets': kwargs['provision_sets']
           }
 
     output_path = tempfile.mkdtemp(prefix=VAGRANTFILE_TMP_DIRECTORY,
