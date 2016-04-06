@@ -39,6 +39,9 @@ inputs:
           the virtualbox machine configuration part.
           Note: Make sure you use 'vbox.' as the prefix of the configuration
           key.
+  provision_sets:
+    description:
+    # TODO add description
 
 node_templates:
   vm1:
@@ -57,6 +60,7 @@ node_templates:
                   vm_ip_address: { get_input: vm_ip_address }
                   additional_vagrant_settings: {}
                   additional_virtualbox_settings: {}
+                  provision_sets: { get_input: provision_sets }
 
 
 
