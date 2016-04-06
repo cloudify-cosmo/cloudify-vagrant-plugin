@@ -31,11 +31,14 @@ inputs:
       Accepts a dictionary with vagrant config parameters. The key and
       values will be printed into the Vagrant file as "key= value", at the
       vagrant machine configuration part.
+      Note: Make sure you use 'config.' as the prefix of the configuration key.
   additional_virtualbox_settings:
     description: >
           Accepts a dictionary with vagrant config parameters. The key and
           values will be printed into the Vagrant file as "key= value", at
           the virtualbox machine configuration part.
+          Note: Make sure you use 'vbox.' as the prefix of the configuration
+          key.
 
 node_templates:
   vm1:
