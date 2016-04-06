@@ -1,3 +1,7 @@
+from netaddr import IPNetwork
+import random
+
+
 def parse_additional_settings(additional_settings, indents):
     string_buffer = ''
     for key, value in additional_settings.items():
@@ -6,4 +10,4 @@ def parse_additional_settings(additional_settings, indents):
 
 
 def gen_ip(ip):
-    raise NotImplementedError
+    return str(random.choice(IPNetwork(ip)))
