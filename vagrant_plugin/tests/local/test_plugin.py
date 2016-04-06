@@ -23,4 +23,5 @@ class TestPlugin(unittest.TestCase):
                          'new_test_input')
 
         # assert deployment outputs are ok
-        self.assertDictEqual(cfy_local.outputs(), get_inputs('test_my_task'))
+        self.assertDictEqual(cfy_local.outputs(), utils.get_inputs(
+                'test_my_task'))
