@@ -9,6 +9,7 @@ setup(
     license='LICENSE',
     description='Plugin for running vagrant tasks',
     install_requires=[
+        'cloudify',
         'cloudify-plugins-common>=3.3.1',
         'jinja2',
         'python-vagrant',
