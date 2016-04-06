@@ -6,6 +6,17 @@ Vagrant.configure(2) do |config|
     # Option to add additional vagrant settings
     {{vm.additional_vagrant_settings}}
 
+    # Provisioning
+    {% for provision_set in provision_sets %}
+        config.vm.provision "provision-{{provision_set['suffix']}}", type:
+            "{{provision_set['type'}}" do |{{provision_set['type'}}|
+
+            {% for key, value in provision_set['provisions'].items() %}
+                {{provision_set['type']}}.{{key}}= {{value}}
+            {% endfor %}
+        end
+    {% endfor %}
+
 	config.vm.provider "virtualbox" do |vbox|
 	    # Configure virtualbox settings
 	    vbox.name = '{{vm.vm_name_prefix}}'
