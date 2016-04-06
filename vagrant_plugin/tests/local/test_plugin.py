@@ -1,6 +1,5 @@
 import utils
 import unittest
-import mock
 import os
 import vagrant_plugin.vbox.tasks
 
