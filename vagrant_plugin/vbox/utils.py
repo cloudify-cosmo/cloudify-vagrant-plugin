@@ -1,5 +1,5 @@
 from netaddr import IPNetwork
-import random
+from random import choice, randrange
 
 
 def parse_additional_settings(additional_settings, indents):
