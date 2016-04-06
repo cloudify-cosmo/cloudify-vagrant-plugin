@@ -5,5 +5,4 @@ vm_memory: 1024
 vm_ip_address: '192.0.2.0/23'
 additional_vagrant_settings: {}
 additional_virtualbox_settings: {}
-provision_sets: [{'suffix': 'shell', 'type': 'shell', 'provisions':
-[{'inline': 'echo hello world!'}, {'inline': 'echo hello again!'}]}]
+provision_sets: [{'suffix': 'shell', 'type': 'shell', 'provisions': [{'inline': 'echo hello world!'}, {'inline': 'echo hello again!'}]}]
