@@ -2,6 +2,7 @@ import utils
 import unittest
 import mock
 import os
+import vagrant_plugin.vbox.tasks
 
 from cloudify.test_utils import workflow_test
 
@@ -10,12 +11,11 @@ class TestPlugin(unittest.TestCase):
     @workflow_test(utils.BLUEPRINT_PATH,
                    resources_to_copy=[utils.PLUGIN_YAML_PATH],
                    inputs=utils.get_inputs('test_my_task'))
-    @mock.patch('vagrant_plugin.vbox.tasks.CURRENT_DIR')
-    def test_my_task(self, cfy_local, mock_current_dir):
-        # Mock current dir to be tasks.py's directory
-        mock_current_dir.return_value = \
+    def test_my_task(self, cfy_local):
+        vagrant_plugin.vbox.tasks.CURRENT_DIR = \
             os.path.join('vbox',
                          utils.get_n_dir_back(os.getcwd(), multiplier=2))
+
         # execute install workflow
         """
         :param cfy_local:
