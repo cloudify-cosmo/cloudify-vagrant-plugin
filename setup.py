@@ -11,6 +11,7 @@ setup(
     install_requires=[
         'cloudify-plugins-common>=3.3.1',
         'jinja2',
-        'python-vagrant'
+        'python-vagrant',
+        'netaddr'
     ]
 )
