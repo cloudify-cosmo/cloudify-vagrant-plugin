@@ -20,6 +20,7 @@ def start(**kwargs):
                                              VBOX_RESOURCE_PATH)))
     template = env.get_template(VAGRANTFILE_TEMPLATE)
 
+    # TODO convert provision_sets['provisions'] to an ordered collection
     vm = {'vbox': kwargs['vbox'],
           'vm_name_prefix':
               '{0}_{1}'.format(kwargs['vm_name_prefix'], instance_id),
