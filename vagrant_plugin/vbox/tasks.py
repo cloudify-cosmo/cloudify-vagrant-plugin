@@ -5,7 +5,6 @@ from cloudify import ctx
 from cloudify.decorators import operation
 import tempfile
 import utils
-from netaddr import IPNetwork
 
 VAGRANTFILE_TEMPLATE = 'Vagrantfile.template'
 VAGRANTFILE_TMP_DIRECTORY = 'cloudify-vagrant-plugin'
