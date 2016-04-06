@@ -9,7 +9,7 @@ Vagrant.configure(2) do |config|
     # Provisioning
     {% for provision_set in vm.provision_sets %}
         config.vm.provision "provision-{{provision_set['suffix']}}", type:
-            "{{provision_set['type']}}" do |{{provision_set['type'}}|
+            "{{provision_set['type']}}" do |{{provision_set['type']}}|
 
             {% for commands_set in provision_set['provisions'] %}
                 {% for key, value in commands_set.items() %}
