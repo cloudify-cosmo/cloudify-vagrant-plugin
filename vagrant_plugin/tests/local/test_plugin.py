@@ -1,5 +1,7 @@
 import utils
 import unittest
+import mock
+import os
 
 from cloudify.test_utils import workflow_test
 
@@ -8,7 +10,12 @@ class TestPlugin(unittest.TestCase):
     @workflow_test(utils.BLUEPRINT_PATH,
                    resources_to_copy=[utils.PLUGIN_YAML_PATH],
                    inputs=utils.get_inputs('test_my_task'))
-    def test_my_task(self, cfy_local):
+    @mock.patch(os.getcwd)
+    def test_my_task(self, mock_current_dir, cfy_local):
+        # Mock current dir to be tasks.py's directory
+        mock_current_dir.return_value = \
+            os.path.join('vbox',
+                         utils.get_n_dir_back(os.getcwd(), multiplier=2))
         # execute install workflow
         """
         :param cfy_local:
