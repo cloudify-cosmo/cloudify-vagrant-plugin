@@ -11,7 +11,7 @@ class TestPlugin(unittest.TestCase):
                    resources_to_copy=[utils.PLUGIN_YAML_PATH],
                    inputs=utils.get_inputs('test_my_task'))
     @mock.patch('vagrant_plugin.vbox.tasks.CURRENT_DIR')
-    def test_my_task(self, mock_current_dir, cfy_local):
+    def test_my_task(self, cfy_local, mock_current_dir):
         # Mock current dir to be tasks.py's directory
         mock_current_dir.return_value = \
             os.path.join('vbox',
