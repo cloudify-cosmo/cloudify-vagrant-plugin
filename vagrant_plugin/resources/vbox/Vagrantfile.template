@@ -6,11 +6,11 @@ Vagrant.configure(2) do |config|
     # Option to add additional vagrant settings
     {{vm.additional_vagrant_settings}}
 
-	config.vm.provider "virtualbox" do |v|
+	config.vm.provider "virtualbox" do |vbox|
 	    # Configure virtualbox settings
-	    v.name = '{{vm.vm_name_prefix}}'
-	    v.memory = {{vm.vm_memory}}
-	    v.cpus = {{vm.vm_cpus}}
+	    vbox.name = '{{vm.vm_name_prefix}}'
+	    vbox.memory = {{vm.vm_memory}}
+	    vbox.cpus = {{vm.vm_cpus}}
 
 	    # Option to add additional virtualbox settings
 	    {{vm.additional_virtualbox_settings}}
