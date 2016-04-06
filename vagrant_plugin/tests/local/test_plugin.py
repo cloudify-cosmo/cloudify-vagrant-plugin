@@ -4,30 +4,40 @@ import unittest
 from cloudify.test_utils import workflow_test
 
 
-class TestPlugin(unittest.TestCase):
-    package_path = os.getcwd()
-    for i in range(0, 3):
-        package_path = os.path.normpath(os.path.join(package_path, '..'))
+def get_n_dir_back(path, multiplier=1):
+    for i in range(0, multiplier):
+        path = os.path.normpath(os.path.join(path, '..'))
+    return path
 
-    plugin_yaml_path = os.path.join(package_path, 'plugin.yaml')
-    
-    @workflow_test(os.path.join('blueprint', 'vagrant-command-blueprint.yaml'),
-                   resources_to_copy=[plugin_yaml_path],
-                   inputs={
-                       'vbox': 'file:///home/david/Downloads/precise64.box',
-                       'vm_name_prefix': 'test',
-                       'vm_cpus': '2',
-                       'vm_memory': '1024',
-                       'vm_ip_address': '192.0.2.0/23',
-                       'additional_vagrant_settings': {},
-                       'additional_virtualbox_settings': {},
-                       'provision_sets': [
-                           {'suffix': 'shell', 'type': 'shell', 'provisions':
-                               [
-                                   {'inline': 'echo hello world!'},
-                                   {'inline': 'echo hello again!'}]}
-                       ]
-                   })
+
+PACKAGE_PATH = get_n_dir_back(os.getcwd(), multiplier=3)
+PLUGIN_YAML_PATH = os.path.join(PACKAGE_PATH, 'plugin.yaml')
+BLUEPRINT_PATH = \
+    os.path.join(os.path.dirname(os.getcwd()),
+                 os.path.join('blueprint',
+                              'vagrant-command-blueprint.yaml'))
+
+
+class TestPlugin(unittest.TestCase):
+    inputs = {
+        'vbox': 'file:///home/david/Downloads/precise64.box',
+        'vm_name_prefix': 'test',
+        'vm_cpus': '2',
+        'vm_memory': '1024',
+        'vm_ip_address': '192.0.2.0/23',
+        'additional_vagrant_settings': {},
+        'additional_virtualbox_settings': {},
+        'provision_sets': [
+            {'suffix': 'shell', 'type': 'shell', 'provisions':
+                [
+                    {'inline': 'echo hello world!'},
+                    {'inline': 'echo hello again!'}]}
+        ]
+    }
+
+    @workflow_test(BLUEPRINT_PATH,
+                   resources_to_copy=[PLUGIN_YAML_PATH],
+                   inputs=inputs)
     def test_my_task(self, cfy_local):
         # execute install workflow
         """
