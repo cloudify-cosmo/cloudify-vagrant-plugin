@@ -34,11 +34,15 @@ def get_inputs(test_method):
                     {'inline': 'echo hello world!'},
                     {'inline': 'echo hello again!'}]}
         ]
-    }
+    }}
 
+    return inputs[test_method]
+
+
+class TestPlugin(unittest.TestCase):
     @workflow_test(BLUEPRINT_PATH,
                    resources_to_copy=[PLUGIN_YAML_PATH],
-                   inputs=inputs)
+                   inputs=get_inputs('test_my_task'))
     def test_my_task(self, cfy_local):
         # execute install workflow
         """
@@ -54,4 +58,4 @@ def get_inputs(test_method):
                          'new_test_input')
 
         # assert deployment outputs are ok
-        self.assertDictEqual(cfy_local.outputs(), inputs)
+        self.assertDictEqual(cfy_local.outputs(), get_inputs('test_my_task'))
