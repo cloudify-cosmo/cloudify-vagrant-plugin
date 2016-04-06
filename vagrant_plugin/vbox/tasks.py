@@ -36,7 +36,9 @@ def start(**kwargs):
     output_path = tempfile.mkdtemp(prefix=VAGRANTFILE_TMP_DIRECTORY,
                                    suffix='-' + instance_id)
     ctx.logger.info('"{0}" path has been created'.format(output_path))
-
+    ctx.instance.runtime_properties['output_path'] = output_path
+    ctx.logger.info('"{0}" path has been saved to runtime properties'.format(
+        output_path))
     with open(os.path.join(output_path, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm=vm))
 
