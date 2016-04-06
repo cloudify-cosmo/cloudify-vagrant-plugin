@@ -15,7 +15,6 @@ BLUEPRINT_PATH = \
                               'vagrant-command-blueprint.yaml'))
 
 
-@staticmethod
 def get_inputs(test_method):
     inputs = {'test_my_task': {
         'vbox': 'file:///home/david/Downloads/precise64.box',
