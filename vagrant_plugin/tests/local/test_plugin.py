@@ -18,8 +18,9 @@ BLUEPRINT_PATH = \
                               'vagrant-command-blueprint.yaml'))
 
 
-class TestPlugin(unittest.TestCase):
-    inputs = {
+@staticmethod
+def get_inputs(test_method):
+    inputs = {'test_my_task': {
         'vbox': 'file:///home/david/Downloads/precise64.box',
         'vm_name_prefix': 'test',
         'vm_cpus': '2',
