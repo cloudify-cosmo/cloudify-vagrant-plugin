@@ -25,8 +25,9 @@ def gen_rand_ip(seed=None):
     while first in not_valid:
         first = random.randrange(1, 256)
 
+    # Use seed only for the first three
+    second = random.randrange(1, 256)
+    third = random.randrange(1, 256)
     random.seed(None)
     return ".".join(
-        [str(first), str(random.randrange(1, 256)), str(random.randrange(1,
-                                                                         256)),
-         str(random.randrange(1, 256))])
+        [str(first), str(second), str(third), str(random.randrange(1, 256))])
