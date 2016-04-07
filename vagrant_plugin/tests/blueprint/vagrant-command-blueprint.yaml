@@ -79,4 +79,3 @@ node_templates:
                   additional_vagrant_settings: {}
                   additional_virtualbox_settings: {}
                   provision_sets: {}
-                  
