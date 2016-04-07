@@ -9,12 +9,12 @@ def parse_additional_settings(additional_settings, indents):
     return string_buffer
 
 
-def set_ip(ip):
+def set_ip(ip, node_id_seed=None):
     if ip:
         # IPNetwork with an IP address returns the IP address
         return str(random.choice(IPNetwork(ip)))
     else:
-        return gen_rand_ip()
+        return gen_rand_ip(seed=node_id_seed)
 
 
 def gen_rand_ip(seed=None):
@@ -25,6 +25,7 @@ def gen_rand_ip(seed=None):
     while first in not_valid:
         first = random.randrange(1, 256)
 
+    random.seed(None)
     return ".".join(
         [str(first), str(random.randrange(1, 256)), str(randrange(1, 256)),
          str(random.randrange(1, 256))])
