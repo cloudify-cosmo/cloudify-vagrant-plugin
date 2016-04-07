@@ -26,7 +26,7 @@ def start(**kwargs):
               '{0}_{1}'.format(kwargs['vm_name_prefix'], instance_id),
           'vm_cpus': kwargs['vm_cpus'],
           'vm_memory': kwargs['vm_memory'],
-          'vm_ip_address': utils.gen_ip(kwargs['vm_ip_address']),
+          'vm_ip_address': utils.set_ip(kwargs['vm_ip_address']),
           'additional_vagrant_settings': utils.parse_additional_settings(
               kwargs['additional_vagrant_settings'], indents=1),
           'additional_virtualbox_settings': utils.parse_additional_settings(

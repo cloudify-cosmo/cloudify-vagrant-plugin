@@ -9,7 +9,7 @@ def parse_additional_settings(additional_settings, indents):
     return string_buffer
 
 
-def gen_ip(ip):
+def set_ip(ip):
     if ip:
         return str(random.choice(IPNetwork(ip)))
     else:
