@@ -16,9 +16,10 @@ def gen_ip(ip):
         return gen_rand_ip()
 
 
-def gen_rand_ip():
+def gen_rand_ip(seed=None):
     not_valid = [10, 127, 169, 172, 192]
 
+    random.seed(seed)
     first = random.randrange(1, 256)
     while first in not_valid:
         first = random.randrange(1, 256)
