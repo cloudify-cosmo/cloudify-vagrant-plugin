@@ -11,6 +11,7 @@ def parse_additional_settings(additional_settings, indents):
 
 def set_ip(ip):
     if ip:
+        # IPNetwork with an IP address returns the IP address
         return str(random.choice(IPNetwork(ip)))
     else:
         return gen_rand_ip()
