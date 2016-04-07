@@ -27,5 +27,6 @@ def gen_rand_ip(seed=None):
 
     random.seed(None)
     return ".".join(
-        [str(first), str(random.randrange(1, 256)), str(randrange(1, 256)),
+        [str(first), str(random.randrange(1, 256)), str(random.randrange(1,
+                                                                         256)),
          str(random.randrange(1, 256))])
