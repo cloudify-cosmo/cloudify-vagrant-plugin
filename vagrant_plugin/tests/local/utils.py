@@ -12,7 +12,7 @@ PLUGIN_YAML_PATH = os.path.join(PACKAGE_PATH, 'plugin.yaml')
 BLUEPRINT_PATH = \
     os.path.join(os.path.dirname(os.getcwd()),
                  os.path.join('blueprint',
-                              'vagrant-command-blueprint.yaml'))
+                              'local-vagrant-blueprint.yaml'))
 
 
 def get_inputs(test_method):
