@@ -46,7 +46,7 @@ inputs:
     # TODO add description
 
 node_templates:
-  vm1:
+  mongod_vm:
     type: cloudify.nodes.Root
     instances:
       deploy: 2
@@ -86,7 +86,7 @@ node_templates:
                         NetworkCollector: {}
 
 
-  vm2:
+  nodejs_vm:
     type: cloudify.nodes.Root
     interfaces:
         cloudify.interfaces.lifecycle:
@@ -154,33 +154,33 @@ node_templates:
                       hosts: "localhost:27017"
       relationships:
         - type: cloudify.relationships.contained_in
-          target: host
+          target: mongod_vm
 
-    nodejs:
-      type: nodecellar.nodes.NodeJSServer
-      relationships:
-        - type: cloudify.relationships.contained_in
-          target: host
+  nodejs:
+    type: nodecellar.nodes.NodeJSServer
+    relationships:
+      - type: cloudify.relationships.contained_in
+        target: nodejs_vm
 
-    nodecellar:
-      type: nodecellar.nodes.NodecellarApplicationModule
-      properties:
-        port: 8080
-      relationships:
+  nodecellar:
+    type: nodecellar.nodes.NodecellarApplicationModule
+    properties:
+      port: 8080
+    relationships:
 
-        ################################
-        # Setting the mongo connection
-        ################################
+      ################################
+      # Setting the mongo connection
+      ################################
 
-        - type: node_connected_to_mongo
-          target: mongod
+      - type: node_connected_to_mongo
+        target: mongod
 
-        ################################
-        # Setting the nodejs connection
-        ################################
+      ################################
+      # Setting the nodejs connection
+      ################################
 
-        - type: node_contained_in_nodejs
-          target: nodejs
+      - type: node_contained_in_nodejs
+        target: nodejs
 
   ###########################################################
   # This outputs section exposes the application endpoint.
@@ -192,5 +192,5 @@ node_templates:
     endpoint:
       description: Web application endpoint
       value:
-        ip_address: { get_property: [ host, ip ] }
+        ip_address: { get_attribute: [ nodejs_vm, ip_address ] }
         port: { get_property: [nodecellar, port] }
