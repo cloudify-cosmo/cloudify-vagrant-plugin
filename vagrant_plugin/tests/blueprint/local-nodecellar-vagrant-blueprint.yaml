@@ -6,7 +6,7 @@ description: >
 imports:
   - http://www.getcloudify.org/spec/cloudify/3.2.1/types.yaml
   - http://www.getcloudify.org/spec/diamond-plugin/1.2.1/plugin.yaml
-  - types/nodecellar.yaml
+  - /home/david/cloudify-vagrant-plugin/types/nodecellar.yaml
   - /home/david/cloudify-vagrant-plugin/plugin.yaml
 
 inputs:
