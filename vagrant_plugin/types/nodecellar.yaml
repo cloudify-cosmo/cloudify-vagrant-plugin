@@ -24,9 +24,9 @@ node_types:
         type: integer
     interfaces:
       cloudify.interfaces.lifecycle:
-        create: scripts/mongo/install-mongo.sh
-        start: scripts/mongo/start-mongo.sh
-        stop: scripts/mongo/stop-mongo.sh
+        create:  /home/david/cloudify-vagrant-plugin/vagrant_plugin/scripts/mongo/install-mongo.sh
+        start:  /home/david/cloudify-vagrant-plugin/vagrant_plugin/scripts/mongo/start-mongo.sh
+        stop:  /home/david/cloudify-vagrant-plugin/vagrant_plugin/scripts/mongo/stop-mongo.sh
 
 
   ###########################################################
@@ -39,7 +39,7 @@ node_types:
     derived_from: cloudify.nodes.ApplicationServer
     interfaces:
       cloudify.interfaces.lifecycle:
-        create: scripts/nodejs/install-nodejs.sh
+        create:  /home/david/cloudify-vagrant-plugin/vagrant_plugin/scripts/nodejs/install-nodejs.sh
 
 
   ###########################################################
@@ -73,8 +73,8 @@ node_types:
     interfaces:
       cloudify.interfaces.lifecycle:
         configure: scripts/nodecellar/install-nodecellar-app.sh
-        start: scripts/nodecellar/start-nodecellar-app.sh
-        stop: scripts/nodecellar/stop-nodecellar-app.sh
+        start:  /home/david/cloudify-vagrant-plugin/vagrant_plugin/scripts/nodecellar/start-nodecellar-app.sh
+        stop:  /home/david/cloudify-vagrant-plugin/vagrant_plugin/scripts/nodecellar/stop-nodecellar-app.sh
 
 
 ################################################################
@@ -99,7 +99,7 @@ relationships:
     derived_from: cloudify.relationships.connected_to
     target_interfaces:
       cloudify.interfaces.relationship_lifecycle:
-        postconfigure: scripts/mongo/set-mongo-url.sh
+        postconfigure:  /home/david/cloudify-vagrant-plugin/vagrant_plugin/scripts/mongo/set-mongo-url.sh
 
 
   ###########################################################
@@ -114,4 +114,4 @@ relationships:
     derived_from: cloudify.relationships.contained_in
     target_interfaces:
       cloudify.interfaces.relationship_lifecycle:
-        preconfigure: scripts/nodejs/set-nodejs-root.sh
+        preconfigure:  /home/david/cloudify-vagrant-plugin/vagrant_plugin/scripts/nodejs/set-nodejs-root.sh
