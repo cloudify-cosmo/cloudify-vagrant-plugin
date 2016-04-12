@@ -27,11 +27,11 @@ def start(**kwargs):
           'vm_cpus': kwargs['vm_cpus'],
           'vm_memory': kwargs['vm_memory'],
           'ip': utils.set_ip(ctx.node.properties['ip'],
-                                        node_id_seed=ctx.node.id),
+                             node_id_seed=ctx.node.id),
           'additional_vagrant_settings': utils.parse_additional_settings(
-              kwargs['additional_vagrant_settings'], indents=1),
+                  kwargs['additional_vagrant_settings'], indents=1),
           'additional_virtualbox_settings': utils.parse_additional_settings(
-              kwargs['additional_virtualbox_settings'], indents=2),
+                  kwargs['additional_virtualbox_settings'], indents=2),
           'provision_sets': kwargs['provision_sets']
           }
 
@@ -40,7 +40,7 @@ def start(**kwargs):
     ctx.logger.info('"{0}" path has been created'.format(output_path))
     ctx.instance.runtime_properties['output_path'] = output_path
     ctx.logger.info('"{0}" path has been saved to runtime properties'.format(
-        output_path))
+            output_path))
     ctx.instance.runtime_properties['ip'] = vm['ip']
     ctx.logger.info('"{0}" ip has been saved to runtime properties'.format(
             vm['ip']))
@@ -57,6 +57,6 @@ def start(**kwargs):
 @operation
 def config(**kwargs):
     ctx.logget.info('Running "vagrant provision" for {0}'.format(
-        ctx.instance.id))
+            ctx.instance.id))
     v = vagrant.Vagrant(root=ctx.instance.runtime_properties['output_path'])
     v.provision()
