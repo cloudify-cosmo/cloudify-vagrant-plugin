@@ -41,6 +41,9 @@ def start(**kwargs):
     ctx.instance.runtime_properties['output_path'] = output_path
     ctx.logger.info('"{0}" path has been saved to runtime properties'.format(
         output_path))
+    ctx.instance.runtime_properties['ip_address'] = vm['vm_ip_address']
+    ctx.logger.info('"{0}" ip_address has been saved to runtime properties'.format(
+            vm['vm_ip_address']))
     with open(os.path.join(output_path, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm=vm))
 
