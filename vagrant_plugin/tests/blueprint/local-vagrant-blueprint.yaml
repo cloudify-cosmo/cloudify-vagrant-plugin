@@ -21,7 +21,7 @@ inputs:
   vm_memory:
     description: Amount of memory to be used by the virtual machine
 
-  vm_ip_address:
+  ip:
     description: >
       The IPv4 address which the virtual machine will be configured with.
       Provide a CIDR to automatically generate an IP by the CIDR.
@@ -45,7 +45,9 @@ inputs:
 
 node_templates:
   vm1:
-    type: cloudify.nodes.Root
+    type: cloudify.nodes.Compute
+    properties:
+      ip: { get_input: ip }
     instances:
       deploy: 2
     interfaces:
@@ -57,7 +59,6 @@ node_templates:
                   vm_name_prefix: { get_input: vm_name_prefix }
                   vm_cpus: { get_input: vm_cpus }
                   vm_memory: { get_input: vm_memory }
-                  vm_ip_address: { get_input: vm_ip_address }
                   additional_vagrant_settings: {}
                   additional_virtualbox_settings: {}
                   provision_sets: { get_input: provision_sets }
@@ -65,7 +66,9 @@ node_templates:
 
 
   vm2:
-    type: cloudify.nodes.Root
+    type: cloudify.nodes.Compute
+    properties:
+          ip: {}
     interfaces:
         cloudify.interfaces.lifecycle:
             start:
@@ -75,7 +78,6 @@ node_templates:
                   vm_name_prefix: { get_input: vm_name_prefix }
                   vm_cpus: { get_input: vm_cpus }
                   vm_memory: { get_input: vm_memory }
-                  vm_ip_address: {}
                   additional_vagrant_settings: {}
                   additional_virtualbox_settings: {}
                   provision_sets: {}

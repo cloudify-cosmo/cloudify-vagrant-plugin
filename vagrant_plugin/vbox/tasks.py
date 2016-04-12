@@ -26,7 +26,7 @@ def start(**kwargs):
               '{0}_{1}'.format(kwargs['vm_name_prefix'], instance_id),
           'vm_cpus': kwargs['vm_cpus'],
           'vm_memory': kwargs['vm_memory'],
-          'vm_ip_address': utils.set_ip(kwargs['vm_ip_address'],
+          'ip': utils.set_ip(ctx.node.properties['ip'],
                                         node_id_seed=ctx.node.id),
           'additional_vagrant_settings': utils.parse_additional_settings(
               kwargs['additional_vagrant_settings'], indents=1),
@@ -41,9 +41,9 @@ def start(**kwargs):
     ctx.instance.runtime_properties['output_path'] = output_path
     ctx.logger.info('"{0}" path has been saved to runtime properties'.format(
         output_path))
-    ctx.instance.runtime_properties['ip_address'] = vm['vm_ip_address']
+    ctx.instance.runtime_properties['ip'] = vm['ip']
     ctx.logger.info('"{0}" ip_address has been saved to runtime properties'.format(
-            vm['vm_ip_address']))
+            vm['ip']))
     with open(os.path.join(output_path, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm=vm))
 
