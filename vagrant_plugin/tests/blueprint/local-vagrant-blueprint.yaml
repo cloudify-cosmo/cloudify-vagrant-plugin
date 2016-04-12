@@ -69,8 +69,8 @@ node_templates:
   vm2:
     type: cloudify.nodes.Compute
     properties:
-          ip: {}
-          install_agent: false
+      ip: {}
+      install_agent: false
     interfaces:
         cloudify.interfaces.lifecycle:
             start:
