@@ -21,7 +21,7 @@ def get_inputs(test_method):
         'vm_name_prefix': 'test',
         'vm_cpus': '2',
         'vm_memory': '1024',
-        'vm_ip_address': '192.0.2.0/23',
+        'ip': '192.0.2.0/23',
         'additional_vagrant_settings': {},
         'additional_virtualbox_settings': {},
         'provision_sets': [
