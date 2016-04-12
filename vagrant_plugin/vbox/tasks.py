@@ -5,19 +5,19 @@ from cloudify import ctx
 from cloudify.decorators import operation
 import tempfile
 import utils
+import vagrant_plugin
 
 VAGRANTFILE_TEMPLATE = 'Vagrantfile.template'
+VAGRANTFILE_TEMPLATE_PATH = os.path.join(
+        os.path.dirname(vagrant_plugin.__file__), 'resources', 'vbox')
 VAGRANTFILE_TMP_DIRECTORY = 'cloudify-vagrant-plugin'
-VBOX_RESOURCE_PATH = os.path.join('resources', 'vbox')
-CURRENT_DIR = os.getcwd()
 
 
 @operation
 def start(**kwargs):
     instance_id = ctx.instance.id
     env = Environment(
-        loader=FileSystemLoader(os.path.join(os.path.dirname(CURRENT_DIR),
-                                             VBOX_RESOURCE_PATH)))
+            loader=FileSystemLoader(VAGRANTFILE_TEMPLATE_PATH))
     template = env.get_template(VAGRANTFILE_TEMPLATE)
 
     # TODO convert provision_sets['provisions'] to an ordered collection
