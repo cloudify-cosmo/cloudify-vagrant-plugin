@@ -53,8 +53,8 @@ node_templates:
       deploy: 2
     interfaces:
         cloudify.interfaces.lifecycle:
-            start:
-                implementation: vagrant.vagrant_plugin.vbox.tasks.start
+            create:
+                implementation: vagrant.vagrant_plugin.vbox.tasks.create
                 inputs:
                   vbox: { get_input: vbox }
                   vm_name_prefix: { get_input: vm_name_prefix }
@@ -63,6 +63,8 @@ node_templates:
                   additional_vagrant_settings: {}
                   additional_virtualbox_settings: {}
                   provision_sets: { get_input: provision_sets }
+            configure:
+                implementation: vagrant.vagrant_plugin.vbox.tasks.configure
 
 
 
@@ -73,8 +75,8 @@ node_templates:
       install_agent: false
     interfaces:
         cloudify.interfaces.lifecycle:
-            start:
-                implementation: vagrant.vagrant_plugin.vbox.tasks.start
+            create:
+                implementation: vagrant.vagrant_plugin.vbox.tasks.create
                 inputs:
                   vbox: { get_input: vbox }
                   vm_name_prefix: { get_input: vm_name_prefix }
@@ -83,3 +85,5 @@ node_templates:
                   additional_vagrant_settings: {}
                   additional_virtualbox_settings: {}
                   provision_sets: {}
+            configure:
+                implementation: vagrant.vagrant_plugin.vbox.tasks.configure

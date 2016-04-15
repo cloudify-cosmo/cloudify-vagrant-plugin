@@ -14,17 +14,8 @@ VAGRANTFILE_TMP_DIRECTORY = 'cloudify-vagrant-plugin-'
 VAGRANT_SSH_PRIVATE_KEY_PATH = os.path.join('.vagrant', 'machines', 'default',
                                             'virtualbox', 'private_key')
 
-
 @operation
-def configure(**kwargs):
-    ctx.logget.info('Running "vagrant provision" for {0}'.format(
-            ctx.instance.id))
-    v = vagrant.Vagrant(root=ctx.instance.runtime_properties['output_path'])
-    v.provision()
-
-
-@operation
-def start(**kwargs):
+def create(**kwargs):
     instance_id = ctx.instance.id
     env = Environment(
             loader=FileSystemLoader(VAGRANTFILE_TEMPLATE_PATH))
@@ -67,6 +58,14 @@ def start(**kwargs):
 
     ctx.logger.info('Initializing Vagrant for {0}'.format(instance_id))
     v = vagrant.Vagrant(root=output_path)
-    ctx.logger.info('Running "vagrant up" for {0}'.format(instance_id))
-    # v.up(no_provision=True) TODO use separate workflow for provisioning
-    v.up()
+
+    ctx.logger.info('Running "vagrant up" for {0}'.format(ctx.instance.id))
+    v.up(no_provision=True)
+
+
+@operation
+def configure(**kwargs):
+    ctx.logget.info('Running "vagrant provision" for {0}'.format(
+            ctx.instance.id))
+    v = vagrant.Vagrant(root=ctx.instance.runtime_properties['output_path'])
+    v.provision()
