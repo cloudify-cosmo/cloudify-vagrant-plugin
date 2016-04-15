@@ -1,5 +1,5 @@
 plugins:
   vagrant:
     executor: central_deployment_agent
-    source: /home/david/cloudify-vagrant-plugin
+    source: /home/david/development/cloudify-vagrant-plugin
     package_name: cloudify-vagrant-plugin
