@@ -16,7 +16,7 @@ VAGRANT_SSH_PRIVATE_KEY_PATH = os.path.join('.vagrant', 'machines', 'default',
 
 
 @operation
-def config(**kwargs):
+def configure(**kwargs):
     ctx.logget.info('Running "vagrant provision" for {0}'.format(
             ctx.instance.id))
     v = vagrant.Vagrant(root=ctx.instance.runtime_properties['output_path'])
