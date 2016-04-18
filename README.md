@@ -18,7 +18,7 @@ To work with this plugin you have to install Cloudify first. Use the documentati
 The next will be at [Vagrant Plugin](documuntation_to_be_added)
 
 ### Locally initializing and deploying Cloudify Vagrant plugins using the CLI
-First, create a blueprint using the example provided in the [blueprint creation section](#"Blueprint Example") along with 
+First, create a blueprint using the example provided in the [blueprint creation section](#"Writing your blueprints") along with 
 the blueprint inputs.
 
 Second, intialize the Cloudify using `cfy`:
@@ -34,5 +34,8 @@ vagrant machine configuration file) can be found in your operation system temp f
 ```
 cloudify-vagrant-plugin-<Random_String>-<Name_Prefix>_<cfy_Instance_ID>
 ```
+
+## Writing your blueprints
+
 
 ## Requirements
