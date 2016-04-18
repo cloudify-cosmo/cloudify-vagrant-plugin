@@ -10,8 +10,8 @@ setup(
     description='Plugin for running vagrant tasks',
     install_requires=[
         'cloudify-plugins-common>=3.3.1',
-        'jinja2',
-        'python-vagrant',
-        'netaddr'
+        'jinja2==2.7.2',
+        'python-vagrant==0.5.11',
+        'netaddr==0.7.18'
     ]
 )
