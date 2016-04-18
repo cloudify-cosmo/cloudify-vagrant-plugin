@@ -40,8 +40,16 @@ inputs:
           Note: Make sure you use 'vbox.' as the prefix of the configuration
           key.
   provision_sets:
-    description:
-    # TODO add description
+    description: >
+          A list of dictionaries, each dictionary represents a provision 'set'.
+          Each provision 'set' has:
+            A "suffix" key - a suffix that will appear in Vagrantfile, at the
+             provision method.
+            A "type" key - the provision type (anything that Vagrant accepts).
+            A "provisions" key - the list of the provision command.
+              each command is a dictionary by itself, the key will be the
+              Vagrant command and the value will be the command itself.
+              For example: {"inline": "echo Hellow, World"}
 
 node_templates:
   vm1:
