@@ -64,10 +64,10 @@ Vagrant plugin create task accepts the following arguments:
           key._
   * **provision_sets**:  A list of dictionaries, each dictionary represents a provision 'set'.
           Each provision 'set' has:
-            * **"suffix"** key - a suffix that will appear in Vagrantfile, at the
+     * **"suffix"** key - a suffix that will appear in Vagrantfile, at the
              provision method.
-            * **"type"** key - the provision type (anything that Vagrant accepts).
-            * **"provisions"** key - the list of the provision command.
+     * **"type"** key - the provision type (anything that Vagrant accepts).
+     * **"provisions"** key - the list of the provision command.
               each command is a dictionary by itself, the key will be the
               Vagrant command and the value will be the command itself.
               For example: `{"inline": "echo Hellow, World"}`
