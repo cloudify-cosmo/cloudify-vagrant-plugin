@@ -24,7 +24,7 @@ inputs:
   ip:
     description: >
       The IPv4 address which the virtual machine will be configured with.
-      Provide a CIDR to automatically generate an IP by the CIDR.
+      Provide a CIDR to automatically generate an IP using the CIDR.
 
   additional_vagrant_settings:
     description: >
