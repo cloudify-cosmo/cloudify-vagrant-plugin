@@ -2,7 +2,7 @@ cloudify-vagrant-plugin
 =======================
 
 A Cloudify Plugin that creates and manages virtual machines in virtualbox
-
+## Requirements
 ## Installation
 
 ### Installing VirtualBox
@@ -36,6 +36,3 @@ cloudify-vagrant-plugin-<Random_String>-<Name_Prefix>_<cfy_Instance_ID>
 ```
 
 ## Writing your blueprints
-
-
-## Requirements
