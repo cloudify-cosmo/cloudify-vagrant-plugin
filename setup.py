@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='cloudify-vagrant-plugin',
-    version='1.0',
+    version='0.1',
     author='Gigaspaces',
     author_email='cosmo-admin@gigaspaces.com',
     packages=['vagrant_plugin', 'vagrant_plugin/vbox'],
