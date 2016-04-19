@@ -1,11 +1,11 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='cloudify-vagrant-plugin',
     version='0.1',
     author='Gigaspaces',
     author_email='cosmo-admin@gigaspaces.com',
-    packages=['vagrant_plugin', 'vagrant_plugin/vbox'],
+    packages=find_packages(exclude=["tests"]),
     license='LICENSE',
     description='Plugin for running vagrant tasks',
     install_requires=[
