@@ -11,7 +11,7 @@ from cloudify.decorators import operation
 import utils
 import vagrant_plugin
 
-VAGRANTFILE_TEMPLATE = pkg_resources.resource_string(vagrant_plugin.__name__,
+vagrantfile_tempalte = pkg_resources.resource_string(vagrant_plugin.__name__,
                                                      'resources/' +
                                                      'vbox/' +
                                                      'Vagrantfile.template')
@@ -25,7 +25,7 @@ VAGRANT_SSH_PRIVATE_KEY_PATH = os.path.join('.vagrant', 'machines', 'default',
 @operation
 def create(**kwargs):
     instance_id = ctx.instance.id
-    template = Template(VAGRANTFILE_TEMPLATE)
+    template = Template(vagrantfile_tempalte)
 
     # TODO convert provision_sets['provisions'] to an ordered collection
     vm = {'vbox': kwargs['vbox'],
