@@ -15,8 +15,6 @@ vagrantfile_tempalte = pkg_resources.resource_string(vagrant_plugin.__name__,
                                                      'resources/' +
                                                      'vbox/' +
                                                      'Vagrantfile.template')
-VAGRANTFILE_TEMPLATE_PATH = os.path.join(
-        os.path.dirname(vagrant_plugin.__file__), 'resources', 'vbox')
 VAGRANTFILE_TMP_DIRECTORY = 'cloudify-vagrant-plugin-'
 VAGRANT_SSH_PRIVATE_KEY_PATH = os.path.join('.vagrant', 'machines', 'default',
                                             'virtualbox', 'private_key')
