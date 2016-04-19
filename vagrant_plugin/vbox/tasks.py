@@ -1,25 +1,26 @@
 import vagrant
 import os
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Template
 from cloudify import ctx
 from cloudify.decorators import operation
 import tempfile
 import utils
 import vagrant_plugin
+import pkg_resources
 
-VAGRANTFILE_TEMPLATE = 'Vagrantfile.template'
+VAGRANTFILE_TEMPLATE = pkg_resources.resource_string("vagrant_plugin",
+                                                     'Vagrantfile.template')
 VAGRANTFILE_TEMPLATE_PATH = os.path.join(
         os.path.dirname(vagrant_plugin.__file__), 'resources', 'vbox')
 VAGRANTFILE_TMP_DIRECTORY = 'cloudify-vagrant-plugin-'
 VAGRANT_SSH_PRIVATE_KEY_PATH = os.path.join('.vagrant', 'machines', 'default',
                                             'virtualbox', 'private_key')
 
+
 @operation
 def create(**kwargs):
     instance_id = ctx.instance.id
-    env = Environment(
-            loader=FileSystemLoader(VAGRANTFILE_TEMPLATE_PATH))
-    template = env.get_template(VAGRANTFILE_TEMPLATE)
+    template = Template(VAGRANTFILE_TEMPLATE)
 
     # TODO convert provision_sets['provisions'] to an ordered collection
     vm = {'vbox': kwargs['vbox'],
