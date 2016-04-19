@@ -16,7 +16,7 @@ vagrantfile_tempalte = pkg_resources.resource_string(vagrant_plugin.__name__,
                                                      'vbox/' +
                                                      'Vagrantfile.template')
 VAGRANTFILE_TMP_DIRECTORY_PREFIX = 'cloudify-vagrant-plugin-'
-VAGRANT_SSH_PRIVATE_KEY_PATH = os.path.join('.vagrant', 'machines', 'default',
+VAGRANT_SSH_PRIVATE_KEY_FILE_PATH = os.path.join('.vagrant', 'machines', 'default',
                                             'virtualbox', 'private_key')
 
 
@@ -53,7 +53,7 @@ def create(**kwargs):
             vm['ip']))
 
     ctx.instance.runtime_properties['ssh_key'] = \
-        os.path.join(output_path, VAGRANT_SSH_PRIVATE_KEY_PATH)
+        os.path.join(output_path, VAGRANT_SSH_PRIVATE_KEY_FILE_PATH)
     ctx.logger.info('"{0}" ssh_key path has been saved to runtime properties'
                     .format(ctx.instance.runtime_properties['ssh_key']))
 
