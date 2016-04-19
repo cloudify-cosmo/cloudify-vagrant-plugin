@@ -26,7 +26,6 @@ def create(**kwargs):
     instance_id = ctx.instance.id
     template = Template(vagrantfile_tempalte)
 
-    # TODO convert provision_sets['provisions'] to an ordered collection
     vm = {'vbox': kwargs['vbox'],
           'vm_name_prefix':
               '{0}_{1}'.format(kwargs['vm_name_prefix'], instance_id),
