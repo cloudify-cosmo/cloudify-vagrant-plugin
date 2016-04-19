@@ -15,7 +15,7 @@ vagrantfile_tempalte = pkg_resources.resource_string(vagrant_plugin.__name__,
                                                      'resources/' +
                                                      'vbox/' +
                                                      'Vagrantfile.template')
-VAGRANTFILE_TMP_DIRECTORY = 'cloudify-vagrant-plugin-'
+VAGRANTFILE_TMP_DIRECTORY_PREFIX = 'cloudify-vagrant-plugin-'
 VAGRANT_SSH_PRIVATE_KEY_PATH = os.path.join('.vagrant', 'machines', 'default',
                                             'virtualbox', 'private_key')
 
@@ -40,7 +40,7 @@ def create(**kwargs):
           'provision_sets': kwargs['provision_sets']
           }
 
-    output_path = tempfile.mkdtemp(prefix=VAGRANTFILE_TMP_DIRECTORY,
+    output_path = tempfile.mkdtemp(prefix=VAGRANTFILE_TMP_DIRECTORY_PREFIX,
                                    suffix='-' + instance_id)
     ctx.logger.info('"{0}" path has been created'.format(output_path))
 
