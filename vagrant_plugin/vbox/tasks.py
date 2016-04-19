@@ -1,12 +1,15 @@
-import vagrant
 import os
+import tempfile
+import pkg_resources
+
+import vagrant
 from jinja2 import Template
+
 from cloudify import ctx
 from cloudify.decorators import operation
-import tempfile
+
 import utils
 import vagrant_plugin
-import pkg_resources
 
 VAGRANTFILE_TEMPLATE = pkg_resources.resource_string(vagrant_plugin.__name__,
                                                      'resources/' +
