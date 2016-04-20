@@ -40,28 +40,28 @@ def create(**kwargs):
           'provision_sets': kwargs['provision_sets']
           }
 
-    output_path = tempfile.mkdtemp(prefix=VAGRANTFILE_TMP_DIRECTORY_PREFIX,
+    output_path_dir = tempfile.mkdtemp(prefix=VAGRANTFILE_TMP_DIRECTORY_PREFIX,
                                    suffix='-' + instance_id)
-    ctx.logger.info('"{0}" path has been created'.format(output_path))
+    ctx.logger.info('"{0}" path has been created'.format(output_path_dir))
 
-    ctx.instance.runtime_properties['output_path'] = output_path
+    ctx.instance.runtime_properties['output_path_dir'] = output_path_dir
     ctx.logger.info('"{0}" path has been saved to runtime properties'.format(
-            output_path))
+            output_path_dir))
 
     ctx.instance.runtime_properties['ip'] = vm_conf['ip']
     ctx.logger.info('"{0}" ip has been saved to runtime properties'.format(
             vm_conf['ip']))
 
     ctx.instance.runtime_properties['ssh_key'] = \
-        os.path.join(output_path, VAGRANT_SSH_PRIVATE_KEY_FILE_PATH)
+        os.path.join(output_path_dir, VAGRANT_SSH_PRIVATE_KEY_FILE_PATH)
     ctx.logger.info('"{0}" ssh_key path has been saved to runtime properties'
                     .format(ctx.instance.runtime_properties['ssh_key']))
 
-    with open(os.path.join(output_path, 'Vagrantfile'), 'w') as f:
+    with open(os.path.join(output_path_dir, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm=vm_conf))
 
     ctx.logger.info('Initializing Vagrant for {0}'.format(instance_id))
-    v = vagrant.Vagrant(root=output_path)
+    v = vagrant.Vagrant(root=output_path_dir)
 
     ctx.logger.info('Running "vagrant up" for {0}'.format(ctx.instance.id))
     v.up(no_provision=True)
