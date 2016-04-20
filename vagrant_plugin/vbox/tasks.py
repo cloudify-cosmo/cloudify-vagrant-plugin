@@ -122,6 +122,7 @@ def stop(**kwargs):
         'output_path_dir'])
     v.halt()
 
+
 @operation
 def delete(**kwargs):
     ctx.logger.info('Running "vagrant destroy" for {0}...'.format(
