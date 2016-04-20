@@ -57,16 +57,15 @@ def create(**kwargs):
     with open(os.path.join(output_path_dir, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm_conf=vm_conf))
 
-    ctx.logger.info('Initializing Vagrant for {0}'.format(instance_id))
     v = vagrant.Vagrant(root=output_path_dir)
 
-    ctx.logger.info('Running "vagrant up" for {0}'.format(ctx.instance.id))
+    ctx.logger.info('Initializing and running "vagrant up" for {0}...'.format(ctx.instance.id))
     v.up(no_provision=True)
 
 
 @operation
 def configure(**kwargs):
-    ctx.logget.info('Running "vagrant provision" for {0}'.format(
+    ctx.logget.info('Running "vagrant provision" for {0}...'.format(
             ctx.instance.id))
     v = vagrant.Vagrant(root=ctx.instance.runtime_properties['output_path'])
     v.provision()
