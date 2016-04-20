@@ -59,7 +59,8 @@ def create(**kwargs):
 
     v = vagrant.Vagrant(root=output_path_dir, quiet_stdout=False)
 
-    ctx.logger.info('Initializing and running "vagrant up" for {0}...'.format(ctx.instance.id))
+    ctx.logger.info('Initializing and running "vagrant up" for {0}...'.format(
+            ctx.instance.id))
     v.up(no_provision=True)
 
 
