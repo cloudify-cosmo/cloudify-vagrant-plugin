@@ -58,7 +58,7 @@ def create(**kwargs):
                     .format(ctx.instance.runtime_properties['ssh_key']))
 
     with open(os.path.join(output_path_dir, 'Vagrantfile'), 'w') as f:
-        f.write(template.render(vm=vm_conf))
+        f.write(template.render(vm_conf=vm_conf))
 
     ctx.logger.info('Initializing Vagrant for {0}'.format(instance_id))
     v = vagrant.Vagrant(root=output_path_dir)
