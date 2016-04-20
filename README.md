@@ -47,6 +47,8 @@ imports:
   - /home/david/development/cloudify-vagrant-plugin/plugin.yaml
 ```
 
+_Note: in order to use Vagrant to connect to the machine or do other operations, you must `cd` to the output dir path first._
+
 ### Inputs
 Vagrant plugin create task accepts the following arguments:
   * **vbox**: VirtualBox box URL or shortened name
