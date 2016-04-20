@@ -26,7 +26,7 @@ def create(**kwargs):
     instance_id = ctx.instance.id
     template = Template(vagrantfile_tempalte)
 
-    vm = {'vbox': kwargs['vbox'],
+    vm_conf = {'vbox': kwargs['vbox'],
           'vm_name_prefix':
               '{0}_{1}'.format(kwargs['vm_name_prefix'], instance_id),
           'vm_cpus': kwargs['vm_cpus'],
@@ -48,9 +48,9 @@ def create(**kwargs):
     ctx.logger.info('"{0}" path has been saved to runtime properties'.format(
             output_path))
 
-    ctx.instance.runtime_properties['ip'] = vm['ip']
+    ctx.instance.runtime_properties['ip'] = vm_conf['ip']
     ctx.logger.info('"{0}" ip has been saved to runtime properties'.format(
-            vm['ip']))
+            vm_conf['ip']))
 
     ctx.instance.runtime_properties['ssh_key'] = \
         os.path.join(output_path, VAGRANT_SSH_PRIVATE_KEY_FILE_PATH)
@@ -58,7 +58,7 @@ def create(**kwargs):
                     .format(ctx.instance.runtime_properties['ssh_key']))
 
     with open(os.path.join(output_path, 'Vagrantfile'), 'w') as f:
-        f.write(template.render(vm=vm))
+        f.write(template.render(vm=vm_conf))
 
     ctx.logger.info('Initializing Vagrant for {0}'.format(instance_id))
     v = vagrant.Vagrant(root=output_path)
