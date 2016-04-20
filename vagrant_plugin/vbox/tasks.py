@@ -57,7 +57,7 @@ def create(**kwargs):
     with open(os.path.join(output_path_dir, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm_conf=vm_conf))
 
-    v = vagrant.Vagrant(root=output_path_dir)
+    v = vagrant.Vagrant(root=output_path_dir, quiet_stdout=False)
 
     ctx.logger.info('Initializing and running "vagrant up" for {0}...'.format(ctx.instance.id))
     v.up(no_provision=True)
