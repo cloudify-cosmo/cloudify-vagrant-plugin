@@ -103,3 +103,21 @@ def configure(**kwargs):
     v = vagrant.Vagrant(root=ctx.instance.runtime_properties[
         'output_path_dir'])
     v.provision()
+
+
+@operation
+def start(**kwargs):
+    ctx.logger.info('Running "vagrant up" for {0}...'.format(
+            ctx.instance.id))
+    v = vagrant.Vagrant(root=ctx.instance.runtime_properties[
+        'output_path_dir'])
+    v.up(no_provision=True)
+
+
+@operation
+def stop(**kwargs):
+    ctx.logger.info('Running "vagrant halt" for {0}...'.format(
+            ctx.instance.id))
+    v = vagrant.Vagrant(root=ctx.instance.runtime_properties[
+        'output_path_dir'])
+    v.halt()
