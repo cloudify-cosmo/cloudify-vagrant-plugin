@@ -9,10 +9,10 @@ provision_sets:
   - suffix: shell
     type: shell
     provisions:
-      - inline: 'bla'
-      - inline: 'bla'
+      - inline: 'echo hello world!'
+      - inline: 'echo hello?'
   - suffix: shell
     type: shell
     provisions:
-      - inline: 'blo'
-      - inline: 'blo'
+      - inline: 'echo hello'
+      - inline: 'echo hello again'
