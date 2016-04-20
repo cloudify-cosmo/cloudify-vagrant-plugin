@@ -22,6 +22,37 @@ VAGRANT_SSH_PRIVATE_KEY_FILE_PATH = os.path.join('.vagrant', 'machines',
                                                  'private_key')
 
 
+def parse_additional_settings(additional_settings, indents):
+    string_buffer = ''
+    for key, value in additional_settings.items():
+        string_buffer += '\n{0}{1}= "{2}"'.format('\t' * indents, key, value)
+    return string_buffer
+
+
+def set_ip(ip, node_id_seed=None):
+    if ip:
+        # IPNetwork with an IP address returns the IP address
+        return str(random.choice(IPNetwork(ip)))
+    else:
+        return gen_rand_ip(seed=node_id_seed)
+
+
+def gen_rand_ip(seed=None):
+    not_valid = [10, 127, 169, 172, 192]
+
+    random.seed(seed)
+    first = random.randrange(1, 256)
+    while first in not_valid:
+        first = random.randrange(1, 256)
+
+    # Use seed only for the first three
+    second = random.randrange(1, 256)
+    third = random.randrange(1, 256)
+    random.seed(None)
+    return ".".join(
+            [str(first), str(second), str(third), str(random.randrange(1, 256))])
+
+
 @operation
 def create(**kwargs):
     instance_id = ctx.instance.id
@@ -32,11 +63,11 @@ def create(**kwargs):
               '{0}_{1}'.format(kwargs['vm_name_prefix'], instance_id),
           'vm_cpus': kwargs['vm_cpus'],
           'vm_memory': kwargs['vm_memory'],
-          'ip': utils.set_ip(ctx.node.properties['ip'],
+          'ip': set_ip(ctx.node.properties['ip'],
                              node_id_seed=ctx.node.id),
-          'additional_vagrant_settings': utils.parse_additional_settings(
+          'additional_vagrant_settings': parse_additional_settings(
                   kwargs['additional_vagrant_settings'], indents=1),
-          'additional_virtualbox_settings': utils.parse_additional_settings(
+          'additional_virtualbox_settings': parse_additional_settings(
                   kwargs['additional_virtualbox_settings'], indents=2),
           'provision_sets': kwargs['provision_sets']
           }
