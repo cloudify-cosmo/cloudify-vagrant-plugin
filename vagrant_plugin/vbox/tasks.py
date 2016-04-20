@@ -10,7 +10,6 @@ from netaddr import IPNetwork
 from cloudify import ctx
 from cloudify.decorators import operation
 
-import utils
 import vagrant_plugin
 
 vagrantfile_tempalte = pkg_resources.resource_string(vagrant_plugin.__name__,
