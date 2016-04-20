@@ -1,9 +1,11 @@
 import os
+import random
 import tempfile
 import pkg_resources
 
 import vagrant
 from jinja2 import Template
+from netaddr import IPNetwork
 
 from cloudify import ctx
 from cloudify.decorators import operation
