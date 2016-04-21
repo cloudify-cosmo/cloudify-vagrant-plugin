@@ -12,10 +12,6 @@ from cloudify.decorators import operation
 
 import vagrant_plugin
 
-vagrantfile_template = \
-    pkg_resources.resource_string(
-            vagrant_plugin.__name__,
-            os.path.join('resources', 'vbox', 'Vagrantfile.template'))
 VAGRANTFILE_TMP_DIRECTORY_PREFIX = 'cloudify-vagrant-plugin-'
 VAGRANT_SSH_PRIVATE_KEY_FILE_PATH = os.path.join(
         '.vagrant', 'machines', 'default', 'virtualbox', 'private_key')
@@ -56,7 +52,11 @@ def gen_rand_ip(seed=None):
 @operation
 def create(**kwargs):
     instance_id = ctx.instance.id
-    template = Template(vagrantfile_template)
+    template = Template(
+            pkg_resources.resource_string(
+                    vagrant_plugin.__name__,
+                    os.path.join('resources', 'vbox', 'Vagrantfile.template'))
+    )
 
     vm_conf = {
         'vbox': kwargs['vbox'],
