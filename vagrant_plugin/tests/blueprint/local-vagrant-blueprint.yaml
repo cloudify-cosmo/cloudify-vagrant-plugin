@@ -86,20 +86,20 @@ node_templates:
       ip: {}
       install_agent: false
     interfaces:
-        cloudify.interfaces.lifecycle:
-          create:
-            implementation: vagrant.vagrant_plugin.vbox.tasks.create
-            inputs:
-              vbox: { get_input: vbox }
-              vm_name_prefix: { get_input: vm_name_prefix }
-              vm_cpus: { get_input: vm_cpus }
-              vm_memory: { get_input: vm_memory }
-              additional_vagrant_settings: {}
-              additional_virtualbox_settings: {}
-              provision_sets: {}
-          configure:
-            implementation: vagrant.vagrant_plugin.vbox.tasks.configure
-          stop:
-            implementation: vagrant.vagrant_plugin.vbox.tasks.stop
-          delete:
-            implementation: vagrant.vagrant_plugin.vbox.tasks.delete
+      cloudify.interfaces.lifecycle:
+        create:
+          implementation: vagrant.vagrant_plugin.vbox.tasks.create
+          inputs:
+            vbox: { get_input: vbox }
+            vm_name_prefix: { get_input: vm_name_prefix }
+            vm_cpus: { get_input: vm_cpus }
+            vm_memory: { get_input: vm_memory }
+            additional_vagrant_settings: {}
+            additional_virtualbox_settings: {}
+            provision_sets: {}
+        configure:
+          implementation: vagrant.vagrant_plugin.vbox.tasks.configure
+        stop:
+          implementation: vagrant.vagrant_plugin.vbox.tasks.stop
+        delete:
+          implementation: vagrant.vagrant_plugin.vbox.tasks.delete
