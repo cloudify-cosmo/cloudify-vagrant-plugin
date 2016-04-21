@@ -52,7 +52,7 @@ def _gen_rand_ip(seed=None):
 def _run_vagrant_command(command, **kwargs):
     vagrant_file_path = ctx.instance.runtime_properties['output_path_dir']
 
-    ctx.logger.info('Running "vagrant {0}"'.format(command))
+    ctx.logger.info('Running "vagrant {0}"...'.format(command))
     v = vagrant.Vagrant(root=vagrant_file_path, **kwargs)
 
     getattr(v, command)(**kwargs)
@@ -82,23 +82,23 @@ def create(**kwargs):
         'provision_sets': kwargs['provision_sets']
     }
 
-    ctx.logger.debug('Creating output tmp dir')
+    ctx.logger.debug('Creating output tmp dir...')
     output_path_dir = tempfile.mkdtemp(prefix=VAGRANTFILE_TMP_DIRECTORY_PREFIX,
                                        suffix='-' + instance_id)
 
-    ctx.logger.debug('Saving output tmp dir to runtime properties')
+    ctx.logger.debug('Saving output tmp dir to runtime properties...')
     ctx.instance.runtime_properties['output_path_dir'] = output_path_dir
 
-    ctx.logger.debug('Saving IP to runtime properties')
+    ctx.logger.debug('Saving IP to runtime properties...')
     ctx.instance.runtime_properties['ip'] = vm_conf['ip']
 
-    ctx.logger.debug('Saving ssh key path to runtime properties')
+    ctx.logger.debug('Saving ssh key path to runtime properties...')
     ctx.instance.runtime_properties['ssh_key'] = \
         os.path.join(output_path_dir, VAGRANT_SSH_PRIVATE_KEY_FILE_PATH)
 
     with open(os.path.join(output_path_dir, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm_conf=vm_conf))
-        
+
     _run_vagrant_command('up', quiet_stdout=False, no_provision=True)
 
 
