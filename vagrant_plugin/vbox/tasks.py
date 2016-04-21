@@ -104,11 +104,7 @@ def create(**kwargs):
 
 @operation
 def configure(**kwargs):
-    ctx.logger.info('Running "vagrant provision" for {0}...'.format(
-            ctx.instance.id))
-    v = vagrant.Vagrant(root=ctx.instance.runtime_properties[
-        'output_path_dir'])
-    v.provision()
+    _run_vagrant_command('provision', quiet_stdout=False)
 
 
 @operation
