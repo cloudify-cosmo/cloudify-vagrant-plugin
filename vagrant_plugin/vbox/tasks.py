@@ -17,9 +17,8 @@ vagrantfile_template = \
             vagrant_plugin.__name__,
             os.path.join('resources', 'vbox', 'Vagrantfile.template'))
 VAGRANTFILE_TMP_DIRECTORY_PREFIX = 'cloudify-vagrant-plugin-'
-VAGRANT_SSH_PRIVATE_KEY_FILE_PATH = os.path.join('.vagrant', 'machines',
-                                                 'default', 'virtualbox',
-                                                 'private_key')
+VAGRANT_SSH_PRIVATE_KEY_FILE_PATH = os.path.join(
+        '.vagrant', 'machines', 'default', 'virtualbox', 'private_key')
 
 
 def parse_additional_settings(additional_settings, indents):
