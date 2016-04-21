@@ -22,8 +22,8 @@
 [32m+[m[32m        '.vagrant', 'machines', 'default', 'virtualbox', 'private_key')[m
  [m
  [m
- def parse_additional_settings(additional_settings, indents):[m
-[36m@@ -57,21 +56,22 @@[m [mdef gen_rand_ip(seed=None):[m
+ def _parse_additional_settings(additional_settings, indents):[m
+[36m@@ -57,21 +56,22 @@[m [mdef _gen_rand_ip(seed=None):[m
  @operation[m
  def create(**kwargs):[m
      instance_id = ctx.instance.id[m
@@ -34,11 +34,11 @@
 [31m-                                                  instance_id),[m
 [31m-               'vm_cpus': kwargs['vm_cpus'],[m
 [31m-               'vm_memory': kwargs['vm_memory'],[m
-[31m-               'ip': set_ip(ctx.node.properties['ip'],[m
+[31m-               'ip': _set_ip(ctx.node.properties['ip'],[m
 [31m-                            node_id_seed=ctx.node.id),[m
-[31m-               'additional_vagrant_settings': parse_additional_settings([m
+[31m-               'additional_vagrant_settings': _parse_additional_settings([m
 [31m-                       kwargs['additional_vagrant_settings'], indents=1),[m
-[31m-               'additional_virtualbox_settings': parse_additional_settings([m
+[31m-               'additional_virtualbox_settings': _parse_additional_settings([m
 [31m-                       kwargs['additional_virtualbox_settings'], indents=2),[m
 [31m-               'provision_sets': kwargs['provision_sets'][m
 [31m-               }[m
@@ -50,11 +50,11 @@
 [32m+[m[32m                kwargs['vm_name_prefix'], instance_id),[m
 [32m+[m[32m        'vm_cpus': kwargs['vm_cpus'],[m
 [32m+[m[32m        'vm_memory': kwargs['vm_memory'],[m
-[32m+[m[32m        'ip': set_ip([m
+[32m+[m[32m        'ip': _set_ip([m
 [32m+[m[32m                ctx.node.properties['ip'], node_id_seed=ctx.node.id),[m
-[32m+[m[32m        'additional_vagrant_settings': parse_additional_settings([m
+[32m+[m[32m        'additional_vagrant_settings': _parse_additional_settings([m
 [32m+[m[32m                kwargs['additional_vagrant_settings'], indents=1),[m
-[32m+[m[32m        'additional_virtualbox_settings': parse_additional_settings([m
+[32m+[m[32m        'additional_virtualbox_settings': _parse_additional_settings([m
 [32m+[m[32m                kwargs['additional_virtualbox_settings'], indents=2),[m
 [32m+[m[32m        'provision_sets': kwargs['provision_sets'][m
 [32m+[m[32m    }[m
