@@ -56,21 +56,22 @@ def gen_rand_ip(seed=None):
 @operation
 def create(**kwargs):
     instance_id = ctx.instance.id
-    template = Template(vagrantfile_tempalte)
+    template = Template(vagrantfile_template)
 
-    vm_conf = {'vbox': kwargs['vbox'],
-               'vm_name_prefix': '{0}_{1}'.format(kwargs['vm_name_prefix'],
-                                                  instance_id),
-               'vm_cpus': kwargs['vm_cpus'],
-               'vm_memory': kwargs['vm_memory'],
-               'ip': set_ip(ctx.node.properties['ip'],
-                            node_id_seed=ctx.node.id),
-               'additional_vagrant_settings': parse_additional_settings(
-                       kwargs['additional_vagrant_settings'], indents=1),
-               'additional_virtualbox_settings': parse_additional_settings(
-                       kwargs['additional_virtualbox_settings'], indents=2),
-               'provision_sets': kwargs['provision_sets']
-               }
+    vm_conf = {
+        'vbox': kwargs['vbox'],
+        'vm_name_prefix': '{0}_{1}'.format(
+                kwargs['vm_name_prefix'], instance_id),
+        'vm_cpus': kwargs['vm_cpus'],
+        'vm_memory': kwargs['vm_memory'],
+        'ip': set_ip(
+                ctx.node.properties['ip'], node_id_seed=ctx.node.id),
+        'additional_vagrant_settings': parse_additional_settings(
+                kwargs['additional_vagrant_settings'], indents=1),
+        'additional_virtualbox_settings': parse_additional_settings(
+                kwargs['additional_virtualbox_settings'], indents=2),
+        'provision_sets': kwargs['provision_sets']
+    }
 
     ctx.logger.debug('Creating output tmp dir')
     output_path_dir = tempfile.mkdtemp(prefix=VAGRANTFILE_TMP_DIRECTORY_PREFIX,
