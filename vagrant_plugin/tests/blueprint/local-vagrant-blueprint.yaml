@@ -73,8 +73,6 @@ node_templates:
                   provision_sets: { get_input: provision_sets }
             configure:
                 implementation: vagrant.vagrant_plugin.vbox.tasks.configure
-            start:
-                implementation: vagrant.vagrant_plugin.vbox.tasks.start
             stop:
                 implementation: vagrant.vagrant_plugin.vbox.tasks.stop
             delete:
@@ -101,8 +99,6 @@ node_templates:
                   provision_sets: {}
             configure:
                 implementation: vagrant.vagrant_plugin.vbox.tasks.configure
-            start:
-                implementation: vagrant.vagrant_plugin.vbox.tasks.start
             stop:
                 implementation: vagrant.vagrant_plugin.vbox.tasks.stop
             delete:
