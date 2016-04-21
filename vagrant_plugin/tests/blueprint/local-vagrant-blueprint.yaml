@@ -21,10 +21,10 @@ inputs:
   vm_memory:
     description: Amount of memory to be used by the virtual machine
 
-  ip:
+  cidr:
     description: >
-      The IPv4 address which the virtual machine will be configured with.
-      Provide a CIDR to automatically generate an IP using the CIDR.
+      The CIDR to be used to generate an IP address for the machine.
+      Also accepts an IP address.
 
   additional_vagrant_settings:
     description: >
@@ -55,7 +55,7 @@ node_templates:
   vm1:
     type: cloudify.nodes.Compute
     properties:
-      ip: { get_input: ip }
+      ip: { get_input: cidr }
       install_agent: false
     instances:
       deploy: 2
