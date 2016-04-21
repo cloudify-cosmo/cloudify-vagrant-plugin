@@ -98,6 +98,7 @@ def create(**kwargs):
 
     with open(os.path.join(output_path_dir, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm_conf=vm_conf))
+        
     _run_vagrant_command('up', quiet_stdout=False, no_provision=True)
 
 
