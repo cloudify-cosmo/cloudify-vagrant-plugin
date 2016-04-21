@@ -24,10 +24,10 @@ def parse_additional_settings(additional_settings, indents):
     return string_buffer
 
 
-def set_ip(CIDR, node_id_seed=None):
-    if CIDR:
+def set_ip(cidr, node_id_seed=None):
+    if cidr:
         # IPNetwork with an IP address returns the IP address
-        return str(random.choice(IPNetwork(CIDR)))
+        return str(random.choice(IPNetwork(cidr)))
     else:
         return gen_rand_ip(seed=node_id_seed)
 
