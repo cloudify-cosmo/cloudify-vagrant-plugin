@@ -126,8 +126,9 @@ def stop(**kwargs):
 
 @operation
 def delete(**kwargs):
+    vagrant_file_path = ctx.instance.runtime_properties['output_path_dir']
+
     ctx.logger.info('Running "vagrant destroy" for {0}...'.format(
             ctx.instance.id))
-    v = vagrant.Vagrant(root=ctx.instance.runtime_properties[
-        'output_path_dir'])
+    v = vagrant.Vagrant(root=vagrant_file_path)
     v.destroy()
