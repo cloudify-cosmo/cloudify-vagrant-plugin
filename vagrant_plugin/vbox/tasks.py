@@ -96,12 +96,13 @@ def create(**kwargs):
             ctx.instance.id))
     v.up(no_provision=True)
 
+def _run_vagrant_command(command, **kwargs):
+    vagrant_file_path = ctx.instance.runtime_properties['output_path_dir']
 
-# def _run_vagrant_command(command, **kwargs):
-#     ctx.logger.info('Running "Vagrant {0}"'.format(command))
-#     v = vagrant.Vagrant(root=None)
-#
-#     getattr(v, command)(**kwargs)
+    ctx.logger.info('Running "Vagrant {0}"'.format(command))
+    v = vagrant.Vagrant(root=vagrant_file_path, **kwargs)
+
+    getattr(v, command)(**kwargs)
 
 
 @operation
