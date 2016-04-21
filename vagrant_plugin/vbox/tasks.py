@@ -49,6 +49,15 @@ def _gen_rand_ip(seed=None):
              str(random.randrange(1, 256))])
 
 
+def _run_vagrant_command(command, **kwargs):
+    vagrant_file_path = ctx.instance.runtime_properties['output_path_dir']
+
+    ctx.logger.info('Running "vagrant {0}"'.format(command))
+    v = vagrant.Vagrant(root=vagrant_file_path, **kwargs)
+
+    getattr(v, command)(**kwargs)
+
+
 @operation
 def create(**kwargs):
     instance_id = ctx.instance.id
@@ -89,17 +98,7 @@ def create(**kwargs):
 
     with open(os.path.join(output_path_dir, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm_conf=vm_conf))
-
     _run_vagrant_command('up', quiet_stdout=False, no_provision=True)
-
-
-def _run_vagrant_command(command, **kwargs):
-    vagrant_file_path = ctx.instance.runtime_properties['output_path_dir']
-
-    ctx.logger.info('Running "vagrant {0}"'.format(command))
-    v = vagrant.Vagrant(root=vagrant_file_path, **kwargs)
-
-    getattr(v, command)(**kwargs)
 
 
 @operation
