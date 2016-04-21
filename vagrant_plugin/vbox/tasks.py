@@ -97,6 +97,13 @@ def create(**kwargs):
     v.up(no_provision=True)
 
 
+# def _run_vagrant_command(command, **kwargs):
+#     ctx.logger.info('Running "Vagrant {0}"'.format(command))
+#     v = vagrant.Vagrant(root=None)
+#
+#     getattr(v, command)(**kwargs)
+
+
 @operation
 def configure(**kwargs):
     ctx.logger.info('Running "vagrant provision" for {0}...'.format(
