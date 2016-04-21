@@ -109,11 +109,7 @@ def configure(**kwargs):
 
 @operation
 def start(**kwargs):
-    ctx.logger.info('Running "vagrant up" for {0}...'.format(
-            ctx.instance.id))
-    v = vagrant.Vagrant(root=ctx.instance.runtime_properties[
-        'output_path_dir'])
-    v.up(no_provision=True)
+    _run_vagrant_command('up', quiet_stdout=False, no_provision=True)
 
 
 @operation
