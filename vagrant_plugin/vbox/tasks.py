@@ -49,13 +49,13 @@ def _gen_rand_ip(seed=None):
              str(random.randrange(1, 256))])
 
 
-def _run_vagrant_command(command, **kwargs):
+def _run_vagrant_command(command, command_kwarg={}, vagrant_init_kwargs={}):
     vagrant_file_path = ctx.instance.runtime_properties['output_path_dir']
 
     ctx.logger.info('Running "vagrant {0}"...'.format(command))
-    v = vagrant.Vagrant(root=vagrant_file_path, **kwargs)
+    v = vagrant.Vagrant(root=vagrant_file_path, **vagrant_init_kwargs)
 
-    getattr(v, command)(**kwargs)
+    getattr(v, command)(**command_kwarg)
 
 
 @operation
