@@ -96,7 +96,7 @@ def create(**kwargs):
 def _run_vagrant_command(command, **kwargs):
     vagrant_file_path = ctx.instance.runtime_properties['output_path_dir']
 
-    ctx.logger.info('Running "Vagrant {0}"'.format(command))
+    ctx.logger.info('Running "vagrant {0}"'.format(command))
     v = vagrant.Vagrant(root=vagrant_file_path, **kwargs)
 
     getattr(v, command)(**kwargs)
