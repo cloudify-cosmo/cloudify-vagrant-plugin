@@ -99,24 +99,41 @@ def create(**kwargs):
     with open(os.path.join(output_path_dir, 'Vagrantfile'), 'w') as f:
         f.write(template.render(vm_conf=vm_conf))
 
-    _run_vagrant_command('up', quiet_stdout=False, no_provision=True)
+    _run_vagrant_command(
+            'up',
+            command_kwarg={'no_provision': True},
+            vagrant_init_kwargs={'quiet_stdout': False}
+    )
 
 
 @operation
 def configure(**kwargs):
-    _run_vagrant_command('provision', quiet_stdout=False)
+    _run_vagrant_command(
+            'provision',
+            vagrant_init_kwargs={'quiet_stdout': False}
+    )
 
 
 @operation
 def start(**kwargs):
-    _run_vagrant_command('up', quiet_stdout=False, no_provision=True)
+    _run_vagrant_command(
+            'up',
+            command_kwarg={'no_provision': True},
+            vagrant_init_kwargs={'quiet_stdout': False}
+    )
 
 
 @operation
 def stop(**kwargs):
-    _run_vagrant_command('halt', quiet_stdout=False)
+    _run_vagrant_command(
+            'halt',
+            vagrant_init_kwargs={'quiet_stdout': False}
+    )
 
 
 @operation
 def delete(**kwargs):
-    _run_vagrant_command('destroy', quiet_stdout=False)
+    _run_vagrant_command(
+            'destroy',
+            vagrant_init_kwargs={'quiet_stdout': False}
+    )
