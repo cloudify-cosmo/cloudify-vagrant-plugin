@@ -34,22 +34,22 @@ inputs:
       Note: Make sure you use 'config.' as the prefix of the configuration key.
   additional_virtualbox_settings:
     description: >
-          Accepts a dictionary with vagrant config parameters. The key and
-          values will be printed into the Vagrant file as "key= value", at
-          the virtualbox machine configuration part.
-          Note: Make sure you use 'vbox.' as the prefix of the configuration
-          key.
+      Accepts a dictionary with vagrant config parameters. The key and
+      values will be printed into the Vagrant file as "key= value", at
+      the virtualbox machine configuration part.
+      Note: Make sure you use 'vbox.' as the prefix of the configuration
+      key.
   provision_sets:
     description: >
-          A list of dictionaries, each dictionary represents a provision 'set'.
-          Each provision 'set' has:
-            A "suffix" key - a suffix that will appear in Vagrantfile, at the
-             provision method.
-            A "type" key - the provision type (anything that Vagrant accepts).
-            A "provisions" key - the list of the provision command.
-              each command is a dictionary by itself, the key will be the
-              Vagrant command and the value will be the command itself.
-              For example: {"inline": "echo Hellow, World"}
+      A list of dictionaries, each dictionary represents a provision 'set'.
+      Each provision 'set' has:
+        A "suffix" key - a suffix that will appear in Vagrantfile, at the
+         provision method.
+        A "type" key - the provision type (anything that Vagrant accepts).
+        A "provisions" key - the list of the provision command.
+          each command is a dictionary by itself, the key will be the
+          Vagrant command and the value will be the command itself.
+          For example: {"inline": "echo Hellow, World"}
 
 node_templates:
   vm1:
@@ -60,23 +60,23 @@ node_templates:
     instances:
       deploy: 2
     interfaces:
-        cloudify.interfaces.lifecycle:
-            create:
-                implementation: vagrant.vagrant_plugin.vbox.tasks.create
-                inputs:
-                  vbox: { get_input: vbox }
-                  vm_name_prefix: { get_input: vm_name_prefix }
-                  vm_cpus: { get_input: vm_cpus }
-                  vm_memory: { get_input: vm_memory }
-                  additional_vagrant_settings: {}
-                  additional_virtualbox_settings: {}
-                  provision_sets: { get_input: provision_sets }
-            configure:
-                implementation: vagrant.vagrant_plugin.vbox.tasks.configure
-            stop:
-                implementation: vagrant.vagrant_plugin.vbox.tasks.stop
-            delete:
-                implementation: vagrant.vagrant_plugin.vbox.tasks.delete
+      cloudify.interfaces.lifecycle:
+        create:
+          implementation: vagrant.vagrant_plugin.vbox.tasks.create
+          inputs:
+            vbox: { get_input: vbox }
+            vm_name_prefix: { get_input: vm_name_prefix }
+            vm_cpus: { get_input: vm_cpus }
+            vm_memory: { get_input: vm_memory }
+            additional_vagrant_settings: {}
+            additional_virtualbox_settings: {}
+            provision_sets: { get_input: provision_sets }
+        configure:
+          implementation: vagrant.vagrant_plugin.vbox.tasks.configure
+        stop:
+          implementation: vagrant.vagrant_plugin.vbox.tasks.stop
+        delete:
+          implementation: vagrant.vagrant_plugin.vbox.tasks.delete
 
 
 
@@ -87,19 +87,19 @@ node_templates:
       install_agent: false
     interfaces:
         cloudify.interfaces.lifecycle:
-            create:
-                implementation: vagrant.vagrant_plugin.vbox.tasks.create
-                inputs:
-                  vbox: { get_input: vbox }
-                  vm_name_prefix: { get_input: vm_name_prefix }
-                  vm_cpus: { get_input: vm_cpus }
-                  vm_memory: { get_input: vm_memory }
-                  additional_vagrant_settings: {}
-                  additional_virtualbox_settings: {}
-                  provision_sets: {}
-            configure:
-                implementation: vagrant.vagrant_plugin.vbox.tasks.configure
-            stop:
-                implementation: vagrant.vagrant_plugin.vbox.tasks.stop
-            delete:
-                implementation: vagrant.vagrant_plugin.vbox.tasks.delete
+          create:
+            implementation: vagrant.vagrant_plugin.vbox.tasks.create
+            inputs:
+              vbox: { get_input: vbox }
+              vm_name_prefix: { get_input: vm_name_prefix }
+              vm_cpus: { get_input: vm_cpus }
+              vm_memory: { get_input: vm_memory }
+              additional_vagrant_settings: {}
+              additional_virtualbox_settings: {}
+              provision_sets: {}
+          configure:
+            implementation: vagrant.vagrant_plugin.vbox.tasks.configure
+          stop:
+            implementation: vagrant.vagrant_plugin.vbox.tasks.stop
+          delete:
+            implementation: vagrant.vagrant_plugin.vbox.tasks.delete
