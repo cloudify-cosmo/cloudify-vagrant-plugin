@@ -12,10 +12,10 @@ from cloudify.decorators import operation
 
 import vagrant_plugin
 
-vagrantfile_tempalte = pkg_resources.resource_string(vagrant_plugin.__name__,
-                                                     'resources/' +
-                                                     'vbox/' +
-                                                     'Vagrantfile.template')
+vagrantfile_template = \
+    pkg_resources.resource_string(
+            vagrant_plugin.__name__,
+            os.path.join('resources', 'vbox', 'Vagrantfile.template'))
 VAGRANTFILE_TMP_DIRECTORY_PREFIX = 'cloudify-vagrant-plugin-'
 VAGRANT_SSH_PRIVATE_KEY_FILE_PATH = os.path.join('.vagrant', 'machines',
                                                  'default', 'virtualbox',
