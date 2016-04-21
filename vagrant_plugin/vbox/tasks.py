@@ -114,11 +114,7 @@ def start(**kwargs):
 
 @operation
 def stop(**kwargs):
-    ctx.logger.info('Running "vagrant halt" for {0}...'.format(
-            ctx.instance.id))
-    v = vagrant.Vagrant(root=ctx.instance.runtime_properties[
-        'output_path_dir'])
-    v.halt()
+    _run_vagrant_command('halt', quiet_stdout=False)
 
 
 @operation
