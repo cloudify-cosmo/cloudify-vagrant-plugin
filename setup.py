@@ -7,7 +7,7 @@ setup(
     author_email='cosmo-admin@gigaspaces.com',
     packages=find_packages(exclude=["tests"]),
     package_dir={'vagrant_plugin': 'vagrant_plugin'},
-    package_data={'vagrant_plugin': ['resource/vbox/Vagrantfile.template']},
+    package_data={'vagrant_plugin': ['resources/vbox/Vagrantfile.template']},
     license='LICENSE',
     description='Plugin for running vagrant tasks',
     install_requires=[
